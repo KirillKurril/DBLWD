@@ -40,11 +40,7 @@ address: VARCHAR(100), NOT NULL
 phone: VARCHAR(20), NOT NULL
 manufacturers: MANY-TO-MANY -> Manufacturer, NOT NULL   
 
-4. Cart
-id: INTEGER, NOT NULL, PK
-user_id: INTEGER, NOT NULL, FK -> User
-
-5. Article 
+4. Article 
 id: INTEGER, NOT NULL, PK
 user_id: INTEGER, NOT NULL, FK -> User
 title:  NVARCHAR(100) NOT NULL
@@ -52,27 +48,26 @@ text:  NVARCHAR(MAX) NOT NULL
 photo:  NVARCHAR(MAX) NOT NULL
 created_at:  DATETIME
 
-6. FAQ
+5. FAQ
 id: INTEGER, NOT NULL, PK
 article_id: INTEGER, NOT NULL, FK -> Article
 question:  NVARCHAR(100) NOT NULL
 
-7. Category
+6. Category
 id: INTEGER, NOT NULL, PK
 name:  NVARCHAR(100) NOT NULL
 description: NVARCHAR(200)
 
-8. Order
+7. Order
 id: INTEGER, NOT NULL, PK
 date:  DATE NOT NULL
 quantity:  INTEGER > 0
 product_id:  INTEGER NOT NULL, FK -> Product
 user_id:  INTEGER NOT NULL, FK -> User
-cart_id:  INTEGER NOT NULL, FK -> Cart
 pickup_point_id:  INTEGER NOT NULL, FK -> PickupPoint
 promocode_id:  INTEGER NOT NULL, FK -> Promocode
 
-9. Vacancy
+8. Vacancy
 id: INTEGER, NOT NULL, PK
 title:  NVARCHAR(100)
 description:  NVARCHAR(MAX)
@@ -83,7 +78,7 @@ salary:  DECIMAL(8,2)
 image:  NVARCHAR(MAX)
 created_at:  DATETIME NOT NULL
 
-10. Review
+9. Review
 id:  INTEGER IDENTITY(1,1) PK
 user_id: INTEGER, NOT NULL, FK -> User
 title:  NVARCHAR(100)
@@ -91,7 +86,7 @@ text:  NVARCHAR(MAX) NOT NULL
 rating:  INTEGER DEFAULT 5 NOT NULL
 created_at: DATETIME DEFAULT NOT NULL
 
-11. User
+10. User
 id:  INTEGER IDENTITY(1,1) PK
 password:  NVARCHAR(128) NOT NULL
 last_login:  DATETIME NULL
@@ -104,7 +99,7 @@ is_staff:  BIT NOT NULL
 is_active:  BIT NOT NULL
 date_joined:  DATETIME NOT NULL
 
-12. Profile
+11. Profile
 id:  INTEGER IDENTITY(1,1) PK
 user_id: INTEGER NOT NULL UNIQUE FK -> User
 birth_date: DATE NULL
@@ -113,7 +108,7 @@ photo: NVARCHAR(MAX)
 job_description: NVARCHAR(MAX) NULL
 non_secretive: BIT DEFAULT 0
 
-13. Product
+12. Product
 id:  INTEGER IDENTITY(1,1) PK
 name:  NVARCHAR(100) NOT NULL
 article_number  NVARCHAR(20) NOT NULL
@@ -123,13 +118,16 @@ image  NVARCHAR(255)
 count  INTEGER DEFAULT 5
 category_id  INT NOT NULL, FK -> Category
 
-14. Partner
+13. Partner
 id:  INTEGER IDENTITY(1,1) PK
 name:  NVARCHAR(100) NOT NULL
 photo: NVARCHAR(MAX)
 website: NVARCHAR(255) NOT NULL
 
-
+14 Supply
+user_id: INTEGER, NOT NULL, FK -> Order
+supplier_id: INTEGER, NOT NULL, FK -> Supplier
+manufacturer_id: INTEGER, NOT NULL, FK -> Manufacturer
 # 3.2 Описание сущностей
 1. PickupPoint (Точка самовывоза):
 Содержит информацию о точках самовывоза, включая название, адрес и номер телефона для связи.
@@ -140,35 +138,32 @@ website: NVARCHAR(255) NOT NULL
 3. Supplier (Поставщик):
 Представляет поставщиков, связанных с несколькими производителями. Содержит контактную информацию  о поставщиках и связь с производителями.
 
-4. Cart (Корзина):
-Содержит информацию о корзинах пользователей. Связана с конкретным пользователем и фофрмленными им товарами.
-
-5. Article (Статья):
+4. Article (Статья):
 Статья, опубликованная модератором или администратором, с указанием названия, текста, фото и даты создания.
 
-6. FAQ (Часто задаваемые вопросы):
+5. FAQ (Часто задаваемые вопросы):
 Специальное расширение статьи, позволяющее описывать часто задаваемые вопросы. Хранит вопрос и связь со статьей.
 
-7. Category (Категория):
+6. Category (Категория):
 Представляет категории товаров и описывает эти категории.
 
-8. Order (Заказ):
+7. Order (Заказ):
 Содержит информацию о заказах, включая количество товаров, связанные промокоды, пользователей и точку самовывоза.
 
-9. Vacancy (Вакансия):
+8. Vacancy (Вакансия):
 Хранит информацию о вакансиях, включая требования, обязанности и уровень заработной платы.
 
-10. Review (Отзыв):
+9. Review (Отзыв):
 Представляет отзывы пользователей о товарах с оценкой, названием и текстом отзыва.
 
-11. User (Пользователь):
+10. User (Пользователь):
 Содержит основную информацию о пользователях системы, включая логин, пароль, электронную почту и статус активности.
 
-12. Profile (Профиль):
+11. Profile (Профиль):
 Хранит дополнительную информацию о пользователе, такую как дата рождения, номер телефона и фото.
 
-13. Product (Товар):
+12. Product (Товар):
 Содержит информацию о товарах, включая название, описание, артикул, цену и категорию.
 
-14. Partner (Партнер):
-Представляет партнеров компании, включая название, фото и сайт.
+13. Partner (Партнер):
+Представляет партнеров компании, включая название, фото и ссылку на сайт.
