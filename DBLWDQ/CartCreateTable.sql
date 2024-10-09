@@ -1,0 +1,5 @@
+CREATE TABLE [Cart](
+[id] INT IDENTITY(1,1) PRIMARY KEY,
+[user_id] INT UNIQUE,
+FOREIGN KEY ([user_id]) REFERENCES [User](id)
+)
