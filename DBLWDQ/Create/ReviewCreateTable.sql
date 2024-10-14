@@ -1,0 +1,9 @@
+CREATE TABLE [Review](
+[id] INT IDENTITY(1,1) PRIMARY KEY,
+[title] NVARCHAR(100) DEFAULT 'Not definded' NOT NULL,
+[text] NVARCHAR(MAX) DEFAULT 'Not definded' NOT NULL,
+[rating] INT DEFAULT 5 NOT NULL,
+[created_at] DATETIME  DEFAULT GETDATE() NOT NULL,
+[user_id] INT NOT NULL,
+FOREIGN KEY ([user_id]) REFERENCES [User]([id]) ON DELETE CASCADE
+)
