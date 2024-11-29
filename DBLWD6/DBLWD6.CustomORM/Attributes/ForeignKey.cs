@@ -3,12 +3,15 @@
     [AttributeUsage(AttributeTargets.Property)]
     public class ForeignKey : Attribute
     {
-        public Type TargetType { get; }
+        Type _targetType { get; }
         public string TargetProperty { get; }
-        public ForeignKey(Type targetType, string targetProperty)
+        public string OnDeleteAction { get; }
+        public string TargetTable => _targetType.Name;
+        public ForeignKey(Type targetType, string targetProperty, string onDeleteAction = "NO ACTION")
         {
-            TargetType = targetType;
+            _targetType = targetType;
             TargetProperty = targetProperty;
+            OnDeleteAction = onDeleteAction;
         }
     }
 }

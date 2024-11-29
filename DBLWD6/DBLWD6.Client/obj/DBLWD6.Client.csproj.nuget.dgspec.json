@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\uni\\DBLWD\\DBLWD6\\DBLWD6.Client\\DBLWD6.Client.csproj": {}
+    "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Client\\DBLWD6.Client.csproj": {}
   },
   "projects": {
-    "D:\\uni\\DBLWD\\DBLWD6\\DBLWD6.Client\\DBLWD6.Client.csproj": {
+    "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Client\\DBLWD6.Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\uni\\DBLWD\\DBLWD6\\DBLWD6.Client\\DBLWD6.Client.csproj",
+        "projectUniqueName": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Client\\DBLWD6.Client.csproj",
         "projectName": "DBLWD6.Client",
-        "projectPath": "D:\\uni\\DBLWD\\DBLWD6\\DBLWD6.Client\\DBLWD6.Client.csproj",
-        "packagesPath": "C:\\Users\\kamid\\.nuget\\packages\\",
-        "outputPath": "D:\\uni\\DBLWD\\DBLWD6\\DBLWD6.Client\\obj\\",
+        "projectPath": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Client\\DBLWD6.Client.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Client\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\kamid\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

@@ -17,27 +17,25 @@ namespace DBLWD6.CustomORM.Repository
         string _updateProcedureName;
         string _deleteProcedureName;
         string _selectByIdProcedureName;
-        string _selectByConditionsProcedureName;
         string _initQuery;
         PropertyInfo[] _modelProperties;
         public TableWrapper(string dbName, string accessString)
         {
             _dbName = dbName;
             _accessString = accessString;
-            _modelProperties = typeof(T).GetProperties();
-            SQLEntity createTable = Converter<T>.GetCreateTableQuery();
-            SQLEntity addProcedure = Converter<T>.GetAddProcedure();
-            SQLEntity updateProcedure = Converter<T>.GetUpdateProcedure();
-            SQLEntity deleteProcedure = Converter<T>.GetDeleteProcedure();
-            SQLEntity selectByIdProcedure = Converter<T>.GetSelectByIdProcedure();
-            SQLEntity selectByConditionsProcedure = Converter<T>.GetSelectByConditionsProcedure();
+            _modelProperties = typeof(T).GetProperties(dbName);
+            SQLEntity createTable = Converter<T>.GetCreateTableQuery(dbName);
+            SQLEntity addProcedure = Converter<T>.GetAddProcedure(dbName);
+            SQLEntity updateProcedure = Converter<T>.GetUpdateProcedure(dbName);
+            SQLEntity deleteProcedure = Converter<T>.GetDeleteProcedure(dbName);
+            SQLEntity selectByIdProcedure = Converter<T>.GetSelectByIdProcedure(dbName);
+            SQLEntity selectByConditionsProcedure = Converter<T>.GetSelectByConditionsProcedure(dbName);
 
             _tableName = createTable.Name;
             _addProcedureName = addProcedure.Name;
             _updateProcedureName = updateProcedure.Name;
             _deleteProcedureName = deleteProcedure.Name;
             _selectByIdProcedureName = selectByIdProcedure.Name;
-            _selectByConditionsProcedureName = selectByConditionsProcedure.Name;
 
              _initQuery =
                 $"""
@@ -246,7 +244,7 @@ namespace DBLWD6.CustomORM.Repository
         }
         public async Task<IEnumerable<T>> GetCollection(Expression<Func<T, bool>> predicate)
         {
-            string selectCollectionQuery = Converter<T>.GetSelectAllProcedure(predicate).Query;
+            string selectCollectionQuery = Converter<T>.GetSelectAllProcedure(_dbName, predicate).Query;
             using (var connection = new SqlConnection(_accessString))
             {
                 await connection.OpenAsync();
