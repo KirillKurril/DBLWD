@@ -107,9 +107,6 @@ namespace DBLWD6.CustomORM.Repository
 
             string addQuery =
                 $"""
-                USE {_tableName};
-                GO
-
                 EXECUTE {_addProcedureName}
                     {string.Join(", ", parameters)}
                 """;
@@ -152,9 +149,6 @@ namespace DBLWD6.CustomORM.Repository
 
             string updateQuery =
                 $"""
-                USE {_tableName};
-                GO
-
                 EXECUTE {_updateProcedureName}
                     @IdVar = {prevObjectId},
                     {string.Join(", ", parameters)}
@@ -180,14 +174,10 @@ namespace DBLWD6.CustomORM.Repository
                 }
             }
         }
-
         public async Task Delete(int objectToDeletId)
         {
             string deleteQuery =
                 $"""
-                USE {_tableName};
-                GO
-
                 EXECUTE {_deleteProcedureName}
                     @IdVar = {objectToDeletId}
                 """;
@@ -212,14 +202,10 @@ namespace DBLWD6.CustomORM.Repository
                 }
             }
         }
-
         public async Task<T> GetById(int id)
         {
             string selectQuery =
                 $"""
-                USE {_tableName};
-                GO
-
                 EXECUTE {_selectByIdProcedureName}
                     @IdVar = {id}
                 """;
@@ -262,11 +248,44 @@ namespace DBLWD6.CustomORM.Repository
                 }
             }
         }
-
-
         public async Task<IEnumerable<T>> GetCollection(Expression<Func<T, bool>> predicate)
         {
-            throw new NotImplementedException();
+            string selectCollectionQuery = Converter<T>.GetSelectAllProcedure(predicate).Query;
+            using (var connection = new SqlConnection(_accessString))
+            {
+                await connection.OpenAsync();
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = selectCollectionQuery;
+                    try
+                    {
+                        using (var reader = await command.ExecuteReaderAsync())
+                        {
+                            List<T> result = new List<T>();
+                            while (await reader.ReadAsync())
+                            {
+                                T entity = Activator.CreateInstance<T>();
+                                for (int i = 0; i < reader.FieldCount; i++)
+                                {
+                                    var property = _modelProperties.FirstOrDefault(p => p.Name.Equals(reader.GetName(i), StringComparison.OrdinalIgnoreCase));
+                                    if (property != null && !reader.IsDBNull(i))
+                                    {
+                                        property.SetValue(entity, reader.GetValue(i));
+                                    }
+                                }
+                                result.Add(entity);
+                            }
+                            return result;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error while trying to fetch collection for {typeof(T)}.\nGet error: {ex.Message}");
+                        Console.WriteLine(selectCollectionQuery);
+                        throw;
+                    }
+                }
+            }
         }
 
 

@@ -28,5 +28,9 @@ namespace DBLWD6.CustomORM.Services
         {
             return new SQLEntity();
         }
+        public static SQLEntity GetSelectAllProcedure(Expression<Func<T, bool>> predicate)
+        {
+            return new SQLEntity();
+        }
     }
 }
