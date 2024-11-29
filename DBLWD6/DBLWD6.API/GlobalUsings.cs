@@ -1,0 +1,1 @@
+global using DBLWD6.CustomORM.Attributes;

@@ -2,7 +2,6 @@
 using DBLWD6.CustomORM.Services;
 using System.Linq.Expressions;
 using Microsoft.Data.SqlClient;
-using System.Threading;
 using System.Data;
 using System.Reflection;
 
@@ -64,10 +63,8 @@ namespace DBLWD6.CustomORM.Repository
                 """;
         }
 
-        public async Task<TableWrapper<T>> CreateWrapperAsync(string dbName, string accessString)
+        public async Task InitAsync()
         {
-            TableWrapper<T> wrapper = new (dbName, accessString);
-
             using (var connection = new SqlConnection(_accessString))
             {
                 await connection.OpenAsync();
@@ -87,7 +84,6 @@ namespace DBLWD6.CustomORM.Repository
                     }
                 }
             }
-            return wrapper;
         }
         public async Task Add(T objectToAdd)
         {

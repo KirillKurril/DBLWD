@@ -31,7 +31,7 @@ BEGIN
     END
 
     INSERT INTO Product (
-        name, 
+        [name], 
         article_number, 
         [description], 
         price_per_unit, 
