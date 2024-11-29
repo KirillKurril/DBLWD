@@ -1,0 +1,211 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Uni\\DBLWD\\DBLWD6\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}|DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.customorm\\services\\converter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}|DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj|solutionrelative:dblwd6.customorm\\services\\converter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}|DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.customorm\\repository\\tablewrapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}|DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj|solutionrelative:dblwd6.customorm\\repository\\tablewrapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}|DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.customorm\\repository\\itablewrapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}|DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj|solutionrelative:dblwd6.customorm\\repository\\itablewrapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}|DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.customorm\\dblwd6.customorm.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}|DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj|solutionrelative:dblwd6.customorm\\dblwd6.customorm.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}|DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.customorm\\attributes\\unique.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}|DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj|solutionrelative:dblwd6.customorm\\attributes\\unique.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}|DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.customorm\\attributes\\primarykey.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}|DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj|solutionrelative:dblwd6.customorm\\attributes\\primarykey.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}|DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.customorm\\attributes\\nonnull.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}|DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj|solutionrelative:dblwd6.customorm\\attributes\\nonnull.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}|DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.customorm\\attributes\\foreignkey.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}|DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj|solutionrelative:dblwd6.customorm\\attributes\\foreignkey.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}|DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.customorm\\entities\\dbentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}|DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj|solutionrelative:dblwd6.customorm\\entities\\dbentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03E129E4-6333-4917-9F59-F5DA8824EB44}|DBLWD6.Client\\DBLWD6.Client.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03E129E4-6333-4917-9F59-F5DA8824EB44}|DBLWD6.Client\\DBLWD6.Client.csproj|solutionrelative:dblwd6.client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|solutionrelative:dblwd6.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Converter.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\Services\\Converter.cs",
+              "RelativeDocumentMoniker": "DBLWD6.CustomORM\\Services\\Converter.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\Services\\Converter.cs",
+              "RelativeToolTip": "DBLWD6.CustomORM\\Services\\Converter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-29T00:16:45.241Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ITableWrapper.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\Repository\\ITableWrapper.cs",
+              "RelativeDocumentMoniker": "DBLWD6.CustomORM\\Repository\\ITableWrapper.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\Repository\\ITableWrapper.cs",
+              "RelativeToolTip": "DBLWD6.CustomORM\\Repository\\ITableWrapper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-29T00:05:17.811Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TableWrapper.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\Repository\\TableWrapper.cs",
+              "RelativeDocumentMoniker": "DBLWD6.CustomORM\\Repository\\TableWrapper.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\Repository\\TableWrapper.cs",
+              "RelativeToolTip": "DBLWD6.CustomORM\\Repository\\TableWrapper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T23:58:58.557Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DBLWD6.CustomORM",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj",
+              "RelativeDocumentMoniker": "DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj",
+              "RelativeToolTip": "DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-11-28T23:13:38.603Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Unique.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\Attributes\\Unique.cs",
+              "RelativeDocumentMoniker": "DBLWD6.CustomORM\\Attributes\\Unique.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\Attributes\\Unique.cs",
+              "RelativeToolTip": "DBLWD6.CustomORM\\Attributes\\Unique.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T23:39:55.9Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PrimaryKey.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\Attributes\\PrimaryKey.cs",
+              "RelativeDocumentMoniker": "DBLWD6.CustomORM\\Attributes\\PrimaryKey.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\Attributes\\PrimaryKey.cs",
+              "RelativeToolTip": "DBLWD6.CustomORM\\Attributes\\PrimaryKey.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T23:37:37.128Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "NonNull.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\Attributes\\NonNull.cs",
+              "RelativeDocumentMoniker": "DBLWD6.CustomORM\\Attributes\\NonNull.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\Attributes\\NonNull.cs",
+              "RelativeToolTip": "DBLWD6.CustomORM\\Attributes\\NonNull.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T23:52:16.664Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ForeignKey.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\Attributes\\ForeignKey.cs",
+              "RelativeDocumentMoniker": "DBLWD6.CustomORM\\Attributes\\ForeignKey.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\Attributes\\ForeignKey.cs",
+              "RelativeToolTip": "DBLWD6.CustomORM\\Attributes\\ForeignKey.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T23:37:48.573Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DbEntity.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\Entities\\DbEntity.cs",
+              "RelativeDocumentMoniker": "DBLWD6.CustomORM\\Entities\\DbEntity.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\Entities\\DbEntity.cs",
+              "RelativeToolTip": "DBLWD6.CustomORM\\Entities\\DbEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T23:29:36.645Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\appsettings.json",
+              "RelativeDocumentMoniker": "DBLWD6.API\\appsettings.json",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\appsettings.json",
+              "RelativeToolTip": "DBLWD6.API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-11-28T23:20:42.729Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Client\\Program.cs",
+              "RelativeDocumentMoniker": "DBLWD6.Client\\Program.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Client\\Program.cs",
+              "RelativeToolTip": "DBLWD6.Client\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T23:11:45.126Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

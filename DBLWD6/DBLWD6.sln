@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35506.116 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBLWD6.API", "DBLWD6.API\DBLWD6.API.csproj", "{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBLWD6.Client", "DBLWD6.Client\DBLWD6.Client.csproj", "{03E129E4-6333-4917-9F59-F5DA8824EB44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBLWD6.CustomORM", "DBLWD6.CustomORM\DBLWD6.CustomORM.csproj", "{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03E129E4-6333-4917-9F59-F5DA8824EB44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03E129E4-6333-4917-9F59-F5DA8824EB44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03E129E4-6333-4917-9F59-F5DA8824EB44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03E129E4-6333-4917-9F59-F5DA8824EB44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
