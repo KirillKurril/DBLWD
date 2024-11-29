@@ -1,26 +1,32 @@
-﻿namespace DBLWD6.CustomORM.Services
+﻿using DBLWD6.CustomORM.Model;
+
+namespace DBLWD6.CustomORM.Services
 {
-    public class Converter
+    public static class Converter<T>
     {
-        public string GetCreateTableQuery(Type modelType)
+        public static SQLEntity GetCreateTableQuery()
         {
-            return string.Empty;
+            return new SQLEntity();
         }
-        public string GetAddProcedure(Type modelType)
+        public static SQLEntity GetAddProcedure()
         {
-            return string.Empty;
+            return new SQLEntity();
         }
-        public string GetDeleteProcedure(Type modelType)
+        public static SQLEntity GetUpdateProcedure()
         {
-            return string.Empty;
+            return new SQLEntity();
         }
-        public string GetSelectByIdProcedure(Type modelType)
+        public static SQLEntity GetDeleteProcedure()
         {
-            return string.Empty;
+            return new SQLEntity();
         }
-        public string GetSelectByConditionsProcedure(Type modelType)
+        public static SQLEntity GetSelectByIdProcedure()
         {
-            return string.Empty;
+            return new SQLEntity();
+        }
+        public static SQLEntity GetSelectByConditionsProcedure()
+        {
+            return new SQLEntity();
         }
     }
 }
