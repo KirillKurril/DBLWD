@@ -4,11 +4,12 @@ namespace DBLWD6.CustomORM.Repository
 {
     public interface ITableWrapper<T>
     {
-        public Task Add(T objectToAdd);
-        public Task Update(T newObject, int prevObjectId);
-        public Task Delete(int objectToDeletId);
-        public Task<T> GetById(int id);
-        public Task<IEnumerable<T>> GetCollection(Expression<Func<T, bool>> predicate);
+        Task Add(T objectToAdd);
+        Task Update(T newObject, int prevObjectId);
+        Task Delete(int objectToDeletId);
+        Task<T> GetById(int id);
+        Task<IEnumerable<T>> GetAll();
+        Task<IEnumerable<T>> GetWithConditions(Expression<Func<T, bool>>? predicate);
 
     }
 }

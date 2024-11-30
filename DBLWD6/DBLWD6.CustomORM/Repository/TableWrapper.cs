@@ -1,10 +1,9 @@
-﻿using DBLWD6.CustomORM.Model;
+using DBLWD6.CustomORM.Model;
 using DBLWD6.CustomORM.Services;
 using System.Linq.Expressions;
 using Microsoft.Data.SqlClient;
 using System.Data;
 using System.Reflection;
-
 
 namespace DBLWD6.CustomORM.Repository
 {
@@ -17,27 +16,29 @@ namespace DBLWD6.CustomORM.Repository
         string _updateProcedureName;
         string _deleteProcedureName;
         string _selectByIdProcedureName;
+        string _selectAllProcedureName;
         string _initQuery;
         PropertyInfo[] _modelProperties;
         public TableWrapper(string dbName, string accessString)
         {
             _dbName = dbName;
             _accessString = accessString;
-            _modelProperties = typeof(T).GetProperties(dbName);
+            _modelProperties = typeof(T).GetProperties();
             SQLEntity createTable = Converter<T>.GetCreateTableQuery(dbName);
             SQLEntity addProcedure = Converter<T>.GetAddProcedure(dbName);
             SQLEntity updateProcedure = Converter<T>.GetUpdateProcedure(dbName);
             SQLEntity deleteProcedure = Converter<T>.GetDeleteProcedure(dbName);
             SQLEntity selectByIdProcedure = Converter<T>.GetSelectByIdProcedure(dbName);
-            SQLEntity selectByConditionsProcedure = Converter<T>.GetSelectByConditionsProcedure(dbName);
+            SQLEntity selectAllProcedure = Converter<T>.GetSelectAllProcedure(dbName);
 
             _tableName = createTable.Name;
             _addProcedureName = addProcedure.Name;
             _updateProcedureName = updateProcedure.Name;
             _deleteProcedureName = deleteProcedure.Name;
             _selectByIdProcedureName = selectByIdProcedure.Name;
+            _selectAllProcedureName = selectAllProcedure.Name;
 
-             _initQuery =
+            _initQuery =
                 $"""
                 BEGIN TRY
                     BEGIN TRANSACTION;
@@ -51,7 +52,7 @@ namespace DBLWD6.CustomORM.Repository
                         GO
                         {selectByIdProcedure.Query}
                         GO
-                        {selectByConditionsProcedure.Query}
+                        {selectAllProcedure.Query}
                         GO
                     COMMIT TRANSACTION;
                 END TRY
@@ -60,7 +61,6 @@ namespace DBLWD6.CustomORM.Repository
                 END CATCH;
                 """;
         }
-
         public async Task InitAsync()
         {
             using (var connection = new SqlConnection(_accessString))
@@ -69,15 +69,15 @@ namespace DBLWD6.CustomORM.Repository
                 using (var command = connection.CreateCommand())
                 {
                     command.CommandText = _initQuery;
+                    Logger.LogQuery(_initQuery, "Initialize Table and Procedures");
                     try
                     {
                         await command.ExecuteNonQueryAsync(); 
-                        Console.WriteLine($"Table {_tableName} initilized successfully.");
+                        Logger.LogSuccess($"Table {_tableName} initialized successfully.");
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"Table {_tableName} initilizing error: {ex.Message}");
-                        Console.WriteLine(_initQuery);
+                        Logger.LogError($"Table {_tableName} initializing error: {ex.Message}", _initQuery);
                         throw; 
                     }
                 }
@@ -111,15 +111,15 @@ namespace DBLWD6.CustomORM.Repository
                 using (var command = connection.CreateCommand())
                 {
                     command.CommandText = addQuery;
+                    Logger.LogQuery(addQuery, "Add Entity");
                     try
                     {
                         await command.ExecuteNonQueryAsync();
-                        Console.WriteLine($"Data {typeof(T)} type added successfully to {_dbName} db");
+                        Logger.LogSuccess($"Data {typeof(T)} type added successfully to {_dbName} db");
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"Error while trying to add {typeof(T)} entity to {_dbName} db.\nAdding error: {ex.Message}");
-                        Console.WriteLine(addQuery);
+                        Logger.LogError($"Error while trying to add {typeof(T)} entity to {_dbName} db.\nAdding error: {ex.Message}", addQuery);
                         throw;
                     }
                 }
@@ -154,15 +154,15 @@ namespace DBLWD6.CustomORM.Repository
                 using (var command = connection.CreateCommand())
                 {
                     command.CommandText = updateQuery;
+                    Logger.LogQuery(updateQuery, "Update Entity");
                     try
                     {
                         await command.ExecuteNonQueryAsync();
-                        Console.WriteLine($"Data {typeof(T)} type updated successfully in {_dbName} db");
+                        Logger.LogSuccess($"Data {typeof(T)} type updated successfully in {_dbName} db");
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"Error while trying to update {typeof(T)} entity in {_dbName} db.\nUpdate error: {ex.Message}");
-                        Console.WriteLine(updateQuery);
+                        Logger.LogError($"Error while trying to update {typeof(T)} entity in {_dbName} db.\nUpdate error: {ex.Message}", updateQuery);
                         throw;
                     }
                 }
@@ -182,15 +182,15 @@ namespace DBLWD6.CustomORM.Repository
                 using (var command = connection.CreateCommand())
                 {
                     command.CommandText = deleteQuery;
+                    Logger.LogQuery(deleteQuery, "Delete Entity");
                     try
                     {
                         await command.ExecuteNonQueryAsync();
-                        Console.WriteLine($"Data {typeof(T)} type deleted successfully from {_dbName} db");
+                        Logger.LogSuccess($"Data {typeof(T)} type deleted successfully from {_dbName} db");
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"Error while trying to delete {typeof(T)} entity from {_dbName} db.\nDelete error: {ex.Message}");
-                        Console.WriteLine(deleteQuery);
+                        Logger.LogError($"Error while trying to delete {typeof(T)} entity from {_dbName} db.\nDelete error: {ex.Message}", deleteQuery);
                         throw;
                     }
                 }
@@ -210,6 +210,7 @@ namespace DBLWD6.CustomORM.Repository
                 using (var command = connection.CreateCommand())
                 {
                     command.CommandText = selectQuery;
+                    Logger.LogQuery(selectQuery, "Get Entity By Id");
                     try
                     {
                         using (var reader = await command.ExecuteReaderAsync())
@@ -225,63 +226,115 @@ namespace DBLWD6.CustomORM.Repository
                                         property.SetValue(result, reader.GetValue(i));
                                     }
                                 }
+                                Logger.LogSuccess($"Successfully retrieved {typeof(T)} with ID {id}");
                                 return result;
                             }
                             else
                             {
+                                Logger.LogSuccess($"No {typeof(T)} found with ID {id}");
                                 return default;
                             }
                         }
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"Error while trying to fetch data by ID {id} for {typeof(T)}.\nGet error: {ex.Message}");
-                        Console.WriteLine(selectQuery);
+                        Logger.LogError($"Error while trying to fetch data by ID {id} for {typeof(T)}.\nGet error: {ex.Message}", selectQuery);
                         throw;
                     }
                 }
             }
         }
-        public async Task<IEnumerable<T>> GetCollection(Expression<Func<T, bool>> predicate)
+        public async Task<IEnumerable<T>> GetAll()
         {
-            string selectCollectionQuery = Converter<T>.GetSelectAllProcedure(_dbName, predicate).Query;
+            string selectQuery =
+                $"""
+                    EXECUTE {_selectAllProcedureName}
+                """;
+
             using (var connection = new SqlConnection(_accessString))
             {
                 await connection.OpenAsync();
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = selectCollectionQuery;
+                    command.CommandText = selectQuery;
+                    Logger.LogQuery(selectQuery, "Get All Entities");
                     try
                     {
                         using (var reader = await command.ExecuteReaderAsync())
                         {
-                            List<T> result = new List<T>();
+                            List<T> selectedEntities = new();
                             while (await reader.ReadAsync())
                             {
-                                T entity = Activator.CreateInstance<T>();
+                                var result = Activator.CreateInstance<T>();
                                 for (int i = 0; i < reader.FieldCount; i++)
                                 {
                                     var property = _modelProperties.FirstOrDefault(p => p.Name.Equals(reader.GetName(i), StringComparison.OrdinalIgnoreCase));
                                     if (property != null && !reader.IsDBNull(i))
                                     {
-                                        property.SetValue(entity, reader.GetValue(i));
+                                        property.SetValue(result, reader.GetValue(i));
                                     }
                                 }
-                                result.Add(entity);
+                                selectedEntities.Add(result);
                             }
-                            return result;
+                            Logger.LogSuccess($"Successfully retrieved {selectedEntities.Count} {typeof(T)} entities");
+                            return selectedEntities;
                         }
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"Error while trying to fetch collection for {typeof(T)}.\nGet error: {ex.Message}");
-                        Console.WriteLine(selectCollectionQuery);
+                        Logger.LogError($"Error while trying to fetch all {typeof(T)} entities.\nGet error: {ex.Message}", selectQuery);
                         throw;
                     }
                 }
             }
         }
+        public async Task<IEnumerable<T>> GetWithConditions(Expression<Func<T, bool>>? predicate)
+        {
+            if (predicate == null)
+            {
+                return await GetAll();
+            }
 
+            var selectByConditions = Converter<T>.GetSelectByConditionsProcedure(_dbName, predicate);
+            string procedureName = selectByConditions.Name;
+            string selectQuery = $"EXECUTE {procedureName}";
 
+            using (var connection = new SqlConnection(_accessString))
+            {
+                await connection.OpenAsync();
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = selectQuery;
+                    Logger.LogQuery(selectQuery, "Get Entities With Conditions");
+                    try
+                    {
+                        using (var reader = await command.ExecuteReaderAsync())
+                        {
+                            List<T> selectedEntities = new();
+                            while (await reader.ReadAsync())
+                            {
+                                var result = Activator.CreateInstance<T>();
+                                for (int i = 0; i < reader.FieldCount; i++)
+                                {
+                                    var property = _modelProperties.FirstOrDefault(p => p.Name.Equals(reader.GetName(i), StringComparison.OrdinalIgnoreCase));
+                                    if (property != null && !reader.IsDBNull(i))
+                                    {
+                                        property.SetValue(result, reader.GetValue(i));
+                                    }
+                                }
+                                selectedEntities.Add(result);
+                            }
+                            Logger.LogSuccess($"Successfully retrieved {selectedEntities.Count} {typeof(T)} entities matching conditions");
+                            return selectedEntities;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.LogError($"Error while trying to fetch {typeof(T)} entities with conditions.\nGet error: {ex.Message}", selectQuery);
+                        throw;
+                    }
+                }
+            }
+        }
     }
 }

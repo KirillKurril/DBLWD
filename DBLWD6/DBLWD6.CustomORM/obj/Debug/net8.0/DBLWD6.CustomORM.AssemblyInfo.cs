@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DBLWD6.CustomORM")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+af0698257888463c0924d3a25328ea3fc9e89ab5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+da79813e7e31284c77961f7b4c0cdc5beb2db019")]
 [assembly: System.Reflection.AssemblyProductAttribute("DBLWD6.CustomORM")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DBLWD6.CustomORM")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

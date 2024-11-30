@@ -37,6 +37,18 @@ namespace DBLWD6.API.Services
         public async void InitDBConnection()
         {
             await CategoryTable.InitAsync();
+            await FAQTable.InitAsync();
+            await ManufacturerTable.InitAsync();
+            await PartnerTable.InitAsync();
+            await PickupPointTable.InitAsync();
+            await ProductTable.InitAsync();
+            await ProductPickupPointTable.InitAsync();
+            await ProfileTable.InitAsync();
+            await PromoCodeTable.InitAsync();
+            await ReviewTable.InitAsync();
+            await SupplierTable.InitAsync();
+            await SupplyTable.InitAsync();
+            await UserTable.InitAsync();
         }
     }
 }
