@@ -2,7 +2,7 @@ using System;
 
 namespace DBLWD6.CustomORM.Services
 {
-    public static class Logger
+    internal static class Logger
     {
         private static ConsoleColor _defaultColor = Console.ForegroundColor;
 

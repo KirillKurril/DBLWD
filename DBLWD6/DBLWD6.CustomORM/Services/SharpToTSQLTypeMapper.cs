@@ -24,7 +24,7 @@
         }
         Type EnsureNotNullable(Type type)
         {
-            Type underlyingType = Nullable.GetUnderlyingType(type);
+            Type? underlyingType = Nullable.GetUnderlyingType(type);
             return underlyingType ?? type;
         }
         bool IsInteger(Type type)

@@ -1,1 +1,1 @@
-global using DBLWD6.CustomORM.Attributes;
+global using DBLWD6.Domain.Entities;

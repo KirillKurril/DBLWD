@@ -685,6 +685,19 @@
         "runtime": {
           "bin/placeholder/DBLWD6.CustomORM.dll": {}
         }
+      },
+      "DBLWD6.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "DBLWD6.CustomORM": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/DBLWD6.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DBLWD6.Domain.dll": {}
+        }
       }
     }
   },
@@ -2132,32 +2145,38 @@
       "type": "project",
       "path": "../DBLWD6.CustomORM/DBLWD6.CustomORM.csproj",
       "msbuildProject": "../DBLWD6.CustomORM/DBLWD6.CustomORM.csproj"
+    },
+    "DBLWD6.Domain/1.0.0": {
+      "type": "project",
+      "path": "../DBLWD6.Domain/DBLWD6.Domain.csproj",
+      "msbuildProject": "../DBLWD6.Domain/DBLWD6.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "DBLWD6.CustomORM >= 1.0.0",
+      "DBLWD6.Domain >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.6.2"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\user\\.nuget\\packages\\": {},
+    "C:\\Users\\kamid\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\DBLWD6.API.csproj",
+      "projectUniqueName": "D:\\uni\\DBLWD\\DBLWD6\\DBLWD6.API\\DBLWD6.API.csproj",
       "projectName": "DBLWD6.API",
-      "projectPath": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\DBLWD6.API.csproj",
-      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\obj\\",
+      "projectPath": "D:\\uni\\DBLWD\\DBLWD6\\DBLWD6.API\\DBLWD6.API.csproj",
+      "packagesPath": "C:\\Users\\kamid\\.nuget\\packages\\",
+      "outputPath": "D:\\uni\\DBLWD\\DBLWD6\\DBLWD6.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\kamid\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -2166,15 +2185,17 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj": {
-              "projectPath": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj"
+            "D:\\uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj": {
+              "projectPath": "D:\\uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj"
+            },
+            "D:\\uni\\DBLWD\\DBLWD6\\DBLWD6.Domain\\DBLWD6.Domain.csproj": {
+              "projectPath": "D:\\uni\\DBLWD\\DBLWD6\\DBLWD6.Domain\\DBLWD6.Domain.csproj"
             }
           }
         }

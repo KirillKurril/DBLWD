@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DBLWD6.CustomORM\DBLWD6.CustomORM.csproj" />
+    <ProjectReference Include="..\DBLWD6.Domain\DBLWD6.Domain.csproj" />
   </ItemGroup>
 
 </Project>

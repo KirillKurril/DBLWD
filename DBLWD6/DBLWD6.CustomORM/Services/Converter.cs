@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DBLWD6.CustomORM.Services
 {
-    public static class Converter<T>
+    internal static class Converter<T>
     {        
         public static SQLEntity GetCreateTableQuery(string dbName)
         {

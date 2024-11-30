@@ -1,6 +1,6 @@
 ﻿namespace DBLWD6.CustomORM.Model
 {
-    public class SQLEntity
+    internal class SQLEntity
     {
         public string Name { get; set; } = string.Empty;
         public string Query { get; set; } = string.Empty;
