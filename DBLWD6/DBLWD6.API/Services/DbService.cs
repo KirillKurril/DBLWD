@@ -4,6 +4,7 @@ namespace DBLWD6.API.Services
 {
     public class DbService
     {
+        public TableWrapper<Article> ArticleTable { get; set; }
         public TableWrapper<Category> CategoryTable { get; set; }
         public TableWrapper<FAQ> FAQTable { get; set; }
         public TableWrapper<Manufacturer> ManufacturerTable { get; set; }
@@ -21,6 +22,7 @@ namespace DBLWD6.API.Services
         public TableWrapper<Vacancy> VacancyTable { get; set; }
         public DbService(string connectionString, string dbName)
         {
+            ArticleTable = new(dbName, connectionString);
             CategoryTable = new(dbName, connectionString);
             FAQTable = new(dbName, connectionString);
             ManufacturerTable = new(dbName, connectionString);
@@ -37,8 +39,9 @@ namespace DBLWD6.API.Services
             UserTable = new(dbName, connectionString);
             VacancyTable = new(dbName, connectionString);
         }
-        public async void InitDBConnection()
+        public async Task InitDBConnection()
         {
+            await ArticleTable.InitAsync();
             await CategoryTable.InitAsync();
             await FAQTable.InitAsync();
             await ManufacturerTable.InitAsync();

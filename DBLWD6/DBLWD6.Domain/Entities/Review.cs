@@ -2,9 +2,6 @@ namespace DBLWD6.Domain.Entities
 {
     public class Review : DbEntity
     {
-        [PrimaryKey]
-        public int Id { get; set; }
-
         [NonNull]
         public string Title { get; set; } = "Not definded";
 

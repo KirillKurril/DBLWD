@@ -19,6 +19,10 @@ namespace DBLWD6.CustomORM.Services
             for (int i = 0; i < modelProperties.Length; i++)
             {
                 PropertyInfo modelProperty = modelProperties[i];
+                bool nonMapped = modelProperty.GetCustomAttributes(true).Any(a => a is NonMapped);
+                if (nonMapped)
+                    continue;
+
                 StringBuilder columnDeclaration = new();
                 columnDeclaration.Append(modelProperty.Name).Append(" ");
                 columnDeclaration.Append(mapper.GetTSQLType(modelProperty.PropertyType));
@@ -83,6 +87,10 @@ namespace DBLWD6.CustomORM.Services
             for (int i = 0; i < modelProperties.Length; i++)
             {
                 PropertyInfo property = modelProperties[i];
+                bool nonMapped = property.GetCustomAttributes(true).Any(a => a is NonMapped);
+                if (nonMapped)
+                    continue;
+
                 bool isIdentity = property.GetCustomAttributes(true).Any(attr => attr is Identity);
 
                 if (!isIdentity)
@@ -139,7 +147,6 @@ namespace DBLWD6.CustomORM.Services
             string tableName = typeof(T).Name;
             string procedureName = $"PRC_Update{tableName}";
 
-            // Find primary key property
             var primaryKeyProperty = modelProperties.FirstOrDefault(
                 prop => prop.GetCustomAttributes(true).Any(attr => attr is PrimaryKey));
 
@@ -152,10 +159,14 @@ namespace DBLWD6.CustomORM.Services
 
             foreach (var property in modelProperties)
             {
+                bool nonMapped = property.GetCustomAttributes(true).Any(a => a is NonMapped);
+                if (nonMapped)
+                    continue;
+
                 bool isIdentity = property.GetCustomAttributes(true).Any(attr => attr is Identity);
                 bool isPrimaryKey = property.GetCustomAttributes(true).Any(attr => attr is PrimaryKey);
                 
-                if (!isIdentity)  // Skip identity columns
+                if (!isIdentity)  
                 {
                     string paramName = $"@{property.Name}Var";
                     string sqlType = mapper.GetTSQLType(property.PropertyType);
@@ -169,12 +180,12 @@ namespace DBLWD6.CustomORM.Services
                     }
 
                     parameters.Append(paramName).Append(" ").Append(sqlType);
-                    if (!isNotNull && !isPrimaryKey)  // Don't make PK parameter nullable
+                    if (!isNotNull && !isPrimaryKey)  
                     {
                         parameters.Append(" = NULL");
                     }
 
-                    if (!isPrimaryKey)  // Don't update PK
+                    if (!isPrimaryKey)  
                     {
                         setStatements.Append(property.Name).Append(" = ").Append(paramName);
                     }
@@ -208,7 +219,7 @@ namespace DBLWD6.CustomORM.Services
             string tableName = typeof(T).Name;
             string procedureName = $"PRC_Delete{tableName}";
 
-            // Find primary key property
+
             var primaryKeyProperty = modelProperties.FirstOrDefault(
                 prop => prop.GetCustomAttributes(true).Any(attr => attr is PrimaryKey));
 
@@ -324,7 +335,7 @@ namespace DBLWD6.CustomORM.Services
                 }
                 return $"{leftSql} {op} {rightSql}";
             }
-            else if (expression is MemberExpression memberExpression) //x.Member
+            else if (expression is MemberExpression memberExpression) 
             {
                 return memberExpression.Member.Name;
             }

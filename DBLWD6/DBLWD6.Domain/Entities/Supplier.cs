@@ -2,9 +2,6 @@ namespace DBLWD6.Domain.Entities
 {
     public class Supplier : DbEntity
     {
-        [PrimaryKey]
-        public int Id { get; set; }
-
         [NonNull]
         public string Name { get; set; }
 

@@ -1,10 +1,4 @@
-﻿using DBLWD6.API.Models;
 using DBLWD6.API.Services;
-using DBLWD6.Domain.Entities;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace DBLWD6.API.Controllers
 {
@@ -12,22 +6,25 @@ namespace DBLWD6.API.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        DbService _dbService;
-        JsonSerializerOptions _options;
         IProductService _productService;
-        public ProductController(DbService service, JsonSerializerOptions options, IProductService productService)
+        public ProductController(IProductService productService)
         {
-            _dbService = service;
-            _options = options;
             _productService = productService;
         }
 
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetCollection([FromQuery] int? page, [FromQuery] int? itemsPerPage, [FromQuery] int? categoryId)
+        public async Task<IActionResult> GetCollection(
+            [FromQuery] int? page, 
+            [FromQuery] int? itemsPerPage, 
+            [FromQuery] int? categoryId,
+            [FromQuery] bool? includeCategory,
+            [FromQuery] bool? includeManufacturers,
+            [FromQuery] bool? includeSuppliers,
+            [FromQuery] bool? includePickupPoints)
         {
             ResponseData<IEnumerable<Product>> productGetCollectionResponse
-                = await _productService.GetProductsCollection(page, itemsPerPage, categoryId);
+                = await _productService.GetProductsCollection(page, itemsPerPage, categoryId, includeCategory, includeManufacturers, includeSuppliers, includePickupPoints);
             
             if(!productGetCollectionResponse.Success)
                 return StatusCode(500, productGetCollectionResponse.ErrorMessage);
@@ -37,10 +34,10 @@ namespace DBLWD6.API.Controllers
 
         [HttpGet]
         [Route("{id:int}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetById(int id, [FromQuery] bool? includeCategory, [FromQuery] bool? includeManufacturers, [FromQuery] bool? includeSuppliers, [FromQuery] bool? includePickupPoints)
         {
             ResponseData<Product> productGetByIdResponse
-                = await _productService.GetProductById(id);
+                = await _productService.GetProductById(id, includeCategory, includeManufacturers, includeSuppliers, includePickupPoints);
 
             if (!productGetByIdResponse.Success)
                 return StatusCode(500, productGetByIdResponse.ErrorMessage);

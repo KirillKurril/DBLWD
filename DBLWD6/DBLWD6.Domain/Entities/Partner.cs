@@ -2,9 +2,6 @@ namespace DBLWD6.Domain.Entities
 {
     public class Partner : DbEntity
     {
-        [PrimaryKey]
-        public int Id { get; set; }
-
         public string? Name { get; set; }
 
         [NonNull]

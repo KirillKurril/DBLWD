@@ -2,9 +2,6 @@ namespace DBLWD6.Domain.Entities
 {
     public class Product : DbEntity
     {
-        [PrimaryKey]
-        public int Id { get; set; }
-
         [NonNull]
         public string Name { get; set; }
 
@@ -23,5 +20,17 @@ namespace DBLWD6.Domain.Entities
         [NonNull]
         [ForeignKey(typeof(Category), "Id")]
         public int CategoryId { get; set; }
+
+        [NonMapped]
+        public Category Category { get; set; }
+        
+        [NonMapped]
+        public List<Supplier> Suppliers { get; set; }
+
+        [NonMapped]
+        public List<Manufacturer> Manufacturers { get; set; }
+
+        [NonMapped]
+        public List<PickupPoint> PickupPoints { get; set; }
     }
 }

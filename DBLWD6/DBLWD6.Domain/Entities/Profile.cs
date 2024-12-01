@@ -2,13 +2,13 @@ namespace DBLWD6.Domain.Entities
 {
     public class Profile : DbEntity
     {
-        [PrimaryKey]
-        public int Id { get; set; }
-
         [NonNull]
         [Unique]
-        [ForeignKey(typeof(User), "Id")]
+        [ForeignKey(typeof(User), "Id", "CASCADE")]
         public int UserId { get; set; }
+
+        [NonMapped]
+        public User User { get; set; }
 
         public DateTime? BirthDate { get; set; }
 

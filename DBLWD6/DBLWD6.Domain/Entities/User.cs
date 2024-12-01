@@ -2,9 +2,6 @@ namespace DBLWD6.Domain.Entities
 {
     public class User : DbEntity
     {
-        [PrimaryKey]
-        public int Id { get; set; }
-
         [NonNull]
         public string Password { get; set; }
 
@@ -33,5 +30,8 @@ namespace DBLWD6.Domain.Entities
 
         [NonNull]
         public DateTime DateJoined { get; set; }
+
+        [NonMapped]
+        public List<Review> Reviews { get; set; }
     }
 }
