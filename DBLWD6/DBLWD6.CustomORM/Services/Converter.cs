@@ -61,15 +61,13 @@ namespace DBLWD6.CustomORM.Services
                 }
 
                 if (i < modelProperties.Length - 1)
-                    columnDeclaration.Append(",\n");
+                    columnDeclaration.Append(",\t\t\t\n");
                 else
-                    columnDeclaration.Append("\n");
+                    columnDeclaration.Append("\t\t\t\n");
 
                 string columnDeclarationAsString = columnDeclaration.ToString();
                 if (columnDeclarationAsString.Contains("UNIQUE") && columnDeclarationAsString.Contains("VARCHAR(MAX)"))
                     columnDeclaration.Replace("VARCHAR(MAX)", "VARCHAR(255)");
-
-
 
 
 
@@ -87,9 +85,6 @@ namespace DBLWD6.CustomORM.Services
                                                    );
                                                END;
                                        """;
-
-
-
             return new SQLEntity(tableName, createTableQuery);
         }
         public static SQLEntity GetAddProcedure(string dbName)
@@ -238,7 +233,6 @@ namespace DBLWD6.CustomORM.Services
             string tableName = typeof(T).Name;
             string procedureName = $"PRC_Delete{tableName}";
 
-
             var primaryKeyProperty = modelProperties.FirstOrDefault(
                 prop => prop.GetCustomAttributes(true).Any(attr => attr is PrimaryKey));
 
@@ -356,48 +350,61 @@ namespace DBLWD6.CustomORM.Services
                 }
                 return $"{leftSql} {op} {rightSql}";
             }
-            else if (expression is MemberExpression memberExpression) 
+            else if (expression is MemberExpression memberExpression)
             {
-                return memberExpression.Member.Name;
+                if (memberExpression.Expression is ParameterExpression)
+                {
+                    return memberExpression.Member.Name;
+                }
+                else
+                {
+                    var value = Expression.Lambda(memberExpression).Compile().DynamicInvoke();
+                    return FormatValueForSql(value);
+                }
             }
             else if (expression is ConstantExpression constantExpression)
             {
-                if (constantExpression.Value is string stringValue)
-                    return $"'{stringValue}'";
-                else if (constantExpression.Value is bool boolValue)
-                    return boolValue ? "1" : "0";
-                return constantExpression.Value?.ToString() ?? "NULL";
+                return FormatValueForSql(constantExpression.Value);
             }
             else if (expression is UnaryExpression unaryExpression)
             {
                 return ProcessExpression(unaryExpression.Operand);
             }
+            else if (expression is ParameterExpression)
+            {
+                return string.Empty;
+            }
 
             throw new InvalidOperationException($"Expression type {expression.GetType().Name} is not supported");
         }
-        public static SQLEntity GetSelectByConditionsProcedure(string dbName, Expression<Func<T, bool>> predicate)
+
+        private static string FormatValueForSql(object value)
+        {
+            if (value is string stringValue)
+                return $"'{stringValue.Replace("'", "''")}'";
+            if (value is bool boolValue)
+                return boolValue ? "1" : "0";
+            if (value is DateTime dateValue)
+                return $"'{dateValue:yyyy-MM-dd HH:mm:ss}'";
+            if (value is null)
+                return "NULL";
+            if (value is decimal || value is double || value is float)
+                return value.ToString().Replace(',', '.');
+            return value.ToString();
+        }
+        public static SQLEntity GetSelectByConditionsQuery(string dbName, Expression<Func<T, bool>> predicate)
         {
             string tableName = typeof(T).Name;
-            string procedureName = $"PRC_SelectByConditions{tableName}";
 
             string whereClause = ProcessExpression(predicate.Body);
 
             string selectByConditionsProcedureQuery = $"""
-            IF NOT EXISTS (SELECT * FROM sys.procedures WHERE name = '{procedureName}' AND type = 'P')
-            BEGIN
-                EXEC('
-                    CREATE PROCEDURE [{procedureName}]
-                    AS
-                    BEGIN
                         SELECT *
                         FROM [{tableName}]
                         WHERE {whereClause};
-                    END
-                ')
-            END;
             """;
 
-            return new SQLEntity(procedureName, selectByConditionsProcedureQuery);
+            return new SQLEntity("selectByConditionsQuery", selectByConditionsProcedureQuery);
         }
         public static SQLEntity GetDropTableQuery(string dbName)
         {

@@ -292,9 +292,8 @@ namespace DBLWD6.CustomORM.Repository
                 return await GetAll();
             }
 
-            var selectByConditions = Converter<T>.GetSelectByConditionsProcedure(_dbName, predicate);
-            string procedureName = selectByConditions.Name;
-            string selectQuery = $"EXECUTE {procedureName}";
+            var selectByConditions = Converter<T>.GetSelectByConditionsQuery(_dbName, predicate);
+            string selectQuery = selectByConditions.Query;
 
             using (var connection = new SqlConnection(_accessString))
             {

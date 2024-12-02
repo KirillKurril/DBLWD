@@ -1,7 +1,10 @@
- namespace DBLWD6.Client
+using DBLWD6.Client.Services; 
+
+namespace DBLWD6.Client
 {
     internal class Program
     {
+        static string _baseUrl = "http://localhost:7010/api/";
         static async Task Main(string[] args)
         {
             while (true)
@@ -19,15 +22,15 @@
                 switch (choice)
                 {
                     case "1":
-                        var productDemo = new Services.ProductDemonstrationService();
+                        var productDemo = new ProductDemonstrationService(_baseUrl);
                         await productDemo.DemonstrateAllMethods();
                         break;
                     case "2":
-                        var orderDemo = new Services.OrderDemonstrationService();
+                        var orderDemo = new OrderDemonstrationService(_baseUrl);
                         await orderDemo.DemonstrateAllMethods();
                         break;
                     case "3":
-                        var userDemo = new Services.UserDemonstrationService();
+                        var userDemo = new UserDemonstrationService(_baseUrl);
                         await userDemo.DemonstrateAllMethods();
                         break;
                     case "0":

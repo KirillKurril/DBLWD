@@ -6,11 +6,12 @@ namespace DBLWD6.Client.Services
     public class UserDemonstrationService
     {
         private readonly HttpClient _httpClient;
-        private const string BaseUrl = "http://localhost:5000/api/user";
+        private readonly string _baseUrl;
 
-        public UserDemonstrationService()
+        public UserDemonstrationService(string baseurl)
         {
             _httpClient = new HttpClient();
+            _baseUrl = baseurl + "User";
         }
 
         public async Task DemonstrateAllMethods()
@@ -86,7 +87,7 @@ namespace DBLWD6.Client.Services
                 if (!string.IsNullOrEmpty(itemsInput)) itemsPerPage = int.Parse(itemsInput);
             }
 
-            var url = $"{BaseUrl}?page={page}&itemsPerPage={itemsPerPage}";
+            var url = $"{_baseUrl}?page={page}&itemsPerPage={itemsPerPage}";
 
             try
             {
@@ -122,7 +123,7 @@ namespace DBLWD6.Client.Services
 
             try
             {
-                var response = await _httpClient.GetAsync($"{BaseUrl}/{userId}");
+                var response = await _httpClient.GetAsync($"{_baseUrl}/{userId}");
                 var content = await response.Content.ReadAsStringAsync();
                 Console.WriteLine($"\nResponse:\n{JsonSerializer.Serialize(content, new JsonSerializerOptions { WriteIndented = true })}");
             }
@@ -189,7 +190,7 @@ namespace DBLWD6.Client.Services
 
             try
             {
-                var response = await _httpClient.PostAsJsonAsync(BaseUrl, user);
+                var response = await _httpClient.PostAsJsonAsync(_baseUrl, user);
                 var content = await response.Content.ReadAsStringAsync();
                 Console.WriteLine($"\nResponse:\n{JsonSerializer.Serialize(content, new JsonSerializerOptions { WriteIndented = true })}");
             }
@@ -265,7 +266,7 @@ namespace DBLWD6.Client.Services
 
             try
             {
-                var response = await _httpClient.PutAsJsonAsync($"{BaseUrl}?prevId={prevId}", user);
+                var response = await _httpClient.PutAsJsonAsync($"{_baseUrl}?prevId={prevId}", user);
                 var content = await response.Content.ReadAsStringAsync();
                 Console.WriteLine($"\nResponse:\n{JsonSerializer.Serialize(content, new JsonSerializerOptions { WriteIndented = true })}");
             }
@@ -297,7 +298,7 @@ namespace DBLWD6.Client.Services
 
             try
             {
-                var response = await _httpClient.DeleteAsync($"{BaseUrl}/{userId}");
+                var response = await _httpClient.DeleteAsync($"{_baseUrl}/{userId}");
                 var content = await response.Content.ReadAsStringAsync();
                 Console.WriteLine($"\nResponse:\n{JsonSerializer.Serialize(content, new JsonSerializerOptions { WriteIndented = true })}");
             }
