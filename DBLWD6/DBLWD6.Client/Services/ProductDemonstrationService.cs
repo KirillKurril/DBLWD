@@ -124,7 +124,28 @@ namespace DBLWD6.Client.Services
             {
                 var response = await _httpClient.GetAsync(url.ToString());
                 var content = await response.Content.ReadAsStringAsync();
-                Console.WriteLine($"\nResponse:\n{JsonSerializer.Serialize(content, new JsonSerializerOptions { WriteIndented = true })}");
+                var products = JsonSerializer.Deserialize<IEnumerable<Product>>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                
+                if (products != null)
+                {
+                    Console.WriteLine("\nProducts found:");
+                    foreach (var product in products)
+                    {
+                        Console.WriteLine("\n----------------------------------------");
+                        Console.WriteLine($"ID: {product.Id}");
+                        Console.WriteLine($"Name: {product.Name}");
+                        Console.WriteLine($"Article Number: {product.ArticleNumber}");
+                        Console.WriteLine($"Description: {product.Description}");
+                        Console.WriteLine($"Price: {product.PricePerUnit:C}");
+                        Console.WriteLine($"In Stock: {product.Count} units");
+                        Console.WriteLine($"Category ID: {product.CategoryId}");
+                        Console.WriteLine("----------------------------------------");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("\nNo products found.");
+                }
             }
             catch (Exception ex)
             {
@@ -156,7 +177,24 @@ namespace DBLWD6.Client.Services
             {
                 var response = await _httpClient.GetAsync($"{_baseUrl}/{productId}");
                 var content = await response.Content.ReadAsStringAsync();
-                Console.WriteLine($"\nResponse:\n{JsonSerializer.Serialize(content, new JsonSerializerOptions { WriteIndented = true })}");
+                var product = JsonSerializer.Deserialize<Product>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                
+                if (product != null)
+                {
+                    Console.WriteLine("\n----------------------------------------");
+                    Console.WriteLine($"ID: {product.Id}");
+                    Console.WriteLine($"Name: {product.Name}");
+                    Console.WriteLine($"Article Number: {product.ArticleNumber}");
+                    Console.WriteLine($"Description: {product.Description}");
+                    Console.WriteLine($"Price: {product.PricePerUnit:C}");
+                    Console.WriteLine($"In Stock: {product.Count} units");
+                    Console.WriteLine($"Category ID: {product.CategoryId}");
+                    Console.WriteLine("----------------------------------------");
+                }
+                else
+                {
+                    Console.WriteLine("\nProduct not found.");
+                }
             }
             catch (Exception ex)
             {
@@ -256,8 +294,6 @@ namespace DBLWD6.Client.Services
                 prevId = int.Parse(Console.ReadLine() ?? "1");
 
                 product = new Product();
-                Console.Write("Enter new product ID: ");
-                product.Id = int.Parse(Console.ReadLine() ?? "1");
 
                 Console.Write("Enter new product name: ");
                 product.Name = Console.ReadLine() ?? "";
@@ -324,17 +360,5 @@ namespace DBLWD6.Client.Services
                 Console.WriteLine($"Error: {ex.Message}");
             }
         }
-    }
-
-    public class Product
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string ArticleNumber { get; set; }
-        public string Description { get; set; }
-        public decimal PricePerUnit { get; set; }
-        public string? Image { get; set; }
-        public int Count { get; set; }
-        public int CategoryId { get; set; }
     }
 }

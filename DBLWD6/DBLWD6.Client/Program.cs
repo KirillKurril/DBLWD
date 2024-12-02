@@ -4,7 +4,7 @@ namespace DBLWD6.Client
 {
     internal class Program
     {
-        static string _baseUrl = "http://localhost:7010/api/";
+        static string _baseUrl = "http://localhost:5010/api/";
         static async Task Main(string[] args)
         {
             while (true)

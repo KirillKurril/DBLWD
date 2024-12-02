@@ -244,7 +244,6 @@ namespace DBLWD6.CustomORM.Services
             string sqlType = mapper.GetTSQLType(primaryKeyProperty.PropertyType);
 
             string deleteProcedureQuery = $"""
-            USE {dbName};
 
             IF NOT EXISTS (SELECT * FROM sys.procedures WHERE name = '{procedureName}' AND type = 'P')
             BEGIN

@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using Microsoft.Data.SqlClient;
 using System.Data;
 using System.Reflection;
+using DBLWD6.CustomORM.Attributes;
 
 namespace DBLWD6.CustomORM.Repository
 {
@@ -46,6 +47,7 @@ namespace DBLWD6.CustomORM.Repository
                     BEGIN TRANSACTION;
                         {createTable.Query}
                         {addProcedure.Query}
+                        {updateProcedure.Query}
                         {deleteProcedure.Query}
                         {selectByIdProcedure.Query}
                         {selectAllProcedure.Query}
@@ -82,33 +84,27 @@ namespace DBLWD6.CustomORM.Repository
         }
         public async Task Add(T objectToAdd)
         {
-            var parameters = _modelProperties
-                .Where(prop => prop.GetValue(objectToAdd) != null)
-                .Select(prop =>
-                {
-                    var value = prop.GetValue(objectToAdd);
-                    string valueStr = value?.ToString() ?? string.Empty;
-
-                    if (prop.PropertyType == typeof(string) || prop.PropertyType == typeof(DateTime) || prop.PropertyType == typeof(Guid))
-                        return $"@{prop.Name}Var = '{valueStr}'";
-                    else
-                        return $"@{prop.Name}Var = {valueStr}";
-                })
-                .ToArray();
-
-            string addQuery =
-                $"""
-                EXECUTE {_addProcedureName}
-                    {string.Join(", ", parameters)}
-                """;
-
             using (var connection = new SqlConnection(_accessString))
             {
                 await connection.OpenAsync();
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = addQuery;
-                    Logger.LogQuery(addQuery, "Add Entity");
+                    command.CommandText = _addProcedureName;
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    foreach (var prop in _modelProperties.Where(p => !p.GetCustomAttributes(true).Any(attr => attr is PrimaryKey)))
+                    {
+                        var value = prop.GetValue(objectToAdd);
+                        if (value != null)
+                        {
+                            var param = command.CreateParameter();
+                            param.ParameterName = $"@{prop.Name}Var";
+                            param.Value = value;
+                            command.Parameters.Add(param);
+                        }
+                    }
+
+                    Logger.LogQuery(command.CommandText, "Add Entity");
                     try
                     {
                         await command.ExecuteNonQueryAsync();
@@ -116,7 +112,7 @@ namespace DBLWD6.CustomORM.Repository
                     }
                     catch (Exception ex)
                     {
-                        Logger.LogError($"Error while trying to add {typeof(T)} entity to {_dbName} db.\nAdding error: {ex.Message}", addQuery);
+                        Logger.LogError($"Error while trying to add {typeof(T)} entity to {_dbName} db.\nAdding error: {ex.Message}", command.CommandText);
                         throw;
                     }
                 }
@@ -124,34 +120,24 @@ namespace DBLWD6.CustomORM.Repository
         }
         public async Task Update(T newObject, int prevObjectId)
         {
-            var parameters = _modelProperties
-                .Where(prop => prop.GetValue(newObject) != null)
-                .Select(prop =>
-                {
-                    var value = prop.GetValue(newObject);
-                    string valueStr = value?.ToString() ?? string.Empty;
-
-                    if (prop.PropertyType == typeof(string) || prop.PropertyType == typeof(DateTime) || prop.PropertyType == typeof(Guid))
-                        return $"@{prop.Name}Var = '{valueStr}'";
-                    else
-                        return $"@{prop.Name}Var = {valueStr}";
-                })
-                .ToArray();
-
-            string updateQuery =
-                $"""
-                EXECUTE {_updateProcedureName}
-                    @IdVar = {prevObjectId},
-                    {string.Join(", ", parameters)}
-                """;
-
             using (var connection = new SqlConnection(_accessString))
             {
                 await connection.OpenAsync();
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = updateQuery;
-                    Logger.LogQuery(updateQuery, "Update Entity");
+                    command.CommandText = _updateProcedureName;
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    foreach (var prop in _modelProperties.Where(p => p.GetValue(newObject) != null && !p.GetCustomAttributes(true).Any(attr => attr is PrimaryKey)))
+                    {
+                        var value = prop.GetValue(newObject);
+                        var param = command.CreateParameter();
+                        param.ParameterName = $"@{prop.Name}Var";
+                        param.Value = value;
+                        command.Parameters.Add(param);
+                    }
+
+                    Logger.LogQuery(command.CommandText, "Update Entity");
                     try
                     {
                         await command.ExecuteNonQueryAsync();
@@ -159,7 +145,7 @@ namespace DBLWD6.CustomORM.Repository
                     }
                     catch (Exception ex)
                     {
-                        Logger.LogError($"Error while trying to update {typeof(T)} entity in {_dbName} db.\nUpdate error: {ex.Message}", updateQuery);
+                        Logger.LogError($"Error while trying to update {typeof(T)} entity in {_dbName} db.\nUpdate error: {ex.Message}", command.CommandText);
                         throw;
                     }
                 }

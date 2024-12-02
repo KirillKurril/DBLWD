@@ -5,7 +5,7 @@
       {
         "Path": "DBLWD6.API\\DBLWD6.API.csproj",
         "Action": "Start",
-        "DebugTarget": "https"
+        "DebugTarget": "http"
       },
       {
         "Path": "DBLWD6.Client\\DBLWD6.Client.csproj",

@@ -22,15 +22,15 @@ namespace DBLWD6.Domain.Entities
         public int CategoryId { get; set; }
 
         [NonMapped]
-        public Category Category { get; set; }
+        public Category? Category { get; set; }
         
         [NonMapped]
-        public List<Supplier> Suppliers { get; set; }
+        public List<Supplier>? Suppliers { get; set; }
 
         [NonMapped]
-        public List<Manufacturer> Manufacturers { get; set; }
+        public List<Manufacturer>? Manufacturers { get; set; }
 
         [NonMapped]
-        public List<PickupPoint> PickupPoints { get; set; }
+        public List<PickupPoint>? PickupPoints { get; set; }
     }
 }
