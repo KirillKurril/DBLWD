@@ -3,10 +3,10 @@
     public class PromoCode : DbEntity
     {
         [NonNull]
-        int Code { get; set; }
+        public int Code { get; set; }
         [NonNull]
-        double DisCount { get; set; }
+        public double DisCount { get; set; }
         [NonNull]
-        DateTime Expiration {  get; set; }
+        public DateTime Expiration {  get; set; }
     }
 }

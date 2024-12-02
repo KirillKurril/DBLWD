@@ -3,12 +3,12 @@
     public class Article : DbEntity
     {
         [NonNull]
-        string Title { get; set; }
+        public string Title { get; set; }
         [NonNull]
-        string Text { get; set; }
+        public string Text { get; set; }
         [NonNull]
-        string Photo { get; set; }
-        DateTime CreatedAt { get; set; }
+        public string Photo { get; set; }
+        public DateTime CreatedAt { get; set; }
         
     }
 }

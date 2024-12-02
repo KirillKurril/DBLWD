@@ -1,0 +1,16 @@
+D:\uni\DBLWD\DBLWD6\DBLWD6.Domain\bin\Debug\net8.0\DBLWD6.Domain.deps.json
+D:\uni\DBLWD\DBLWD6\DBLWD6.Domain\bin\Debug\net8.0\DBLWD6.Domain.dll
+D:\uni\DBLWD\DBLWD6\DBLWD6.Domain\bin\Debug\net8.0\DBLWD6.Domain.pdb
+D:\uni\DBLWD\DBLWD6\DBLWD6.Domain\bin\Debug\net8.0\DBLWD6.CustomORM.dll
+D:\uni\DBLWD\DBLWD6\DBLWD6.Domain\bin\Debug\net8.0\DBLWD6.CustomORM.pdb
+D:\uni\DBLWD\DBLWD6\DBLWD6.Domain\obj\Debug\net8.0\DBLWD6.Domain.csproj.AssemblyReference.cache
+D:\uni\DBLWD\DBLWD6\DBLWD6.Domain\obj\Debug\net8.0\DBLWD6.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\uni\DBLWD\DBLWD6\DBLWD6.Domain\obj\Debug\net8.0\DBLWD6.Domain.AssemblyInfoInputs.cache
+D:\uni\DBLWD\DBLWD6\DBLWD6.Domain\obj\Debug\net8.0\DBLWD6.Domain.AssemblyInfo.cs
+D:\uni\DBLWD\DBLWD6\DBLWD6.Domain\obj\Debug\net8.0\DBLWD6.Domain.csproj.CoreCompileInputs.cache
+D:\uni\DBLWD\DBLWD6\DBLWD6.Domain\obj\Debug\net8.0\DBLWD6.Domain.sourcelink.json
+D:\uni\DBLWD\DBLWD6\DBLWD6.Domain\obj\Debug\net8.0\DBLWD6.D.73F50C92.Up2Date
+D:\uni\DBLWD\DBLWD6\DBLWD6.Domain\obj\Debug\net8.0\DBLWD6.Domain.dll
+D:\uni\DBLWD\DBLWD6\DBLWD6.Domain\obj\Debug\net8.0\refint\DBLWD6.Domain.dll
+D:\uni\DBLWD\DBLWD6\DBLWD6.Domain\obj\Debug\net8.0\DBLWD6.Domain.pdb
+D:\uni\DBLWD\DBLWD6\DBLWD6.Domain\obj\Debug\net8.0\ref\DBLWD6.Domain.dll

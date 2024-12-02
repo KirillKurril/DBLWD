@@ -40,26 +40,23 @@ namespace DBLWD6.CustomORM.Repository
 
             _initQuery =
                 $"""
+                USE {_dbName};
+                
                 BEGIN TRY
                     BEGIN TRANSACTION;
-                        USE {_dbName};
-                        GO
                         {createTable.Query}
-                        GO
                         {addProcedure.Query}
-                        GO
                         {deleteProcedure.Query}
-                        GO
                         {selectByIdProcedure.Query}
-                        GO
                         {selectAllProcedure.Query}
-                        GO
                     COMMIT TRANSACTION;
                 END TRY
                 BEGIN CATCH
                     ROLLBACK TRANSACTION;
                 END CATCH;
                 """;
+
+            Logger.LogQuery(_initQuery,$"Table {_tableName} creation string");
         }
         public async Task InitAsync()
         {

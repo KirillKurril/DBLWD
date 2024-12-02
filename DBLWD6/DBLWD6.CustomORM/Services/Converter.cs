@@ -27,13 +27,17 @@ namespace DBLWD6.CustomORM.Services
                 columnDeclaration.Append(modelProperty.Name).Append(" ");
                 columnDeclaration.Append(mapper.GetTSQLType(modelProperty.PropertyType));
 
-                object[] attributes = modelProperty.GetCustomAttributes(true);
+                object[] attributes = modelProperty.GetCustomAttributes(true)
+                    .Where(a => typeof(ICustomORMAttribute).IsAssignableFrom(a.GetType()))
+                    .ToArray();
 
                 if (attributes.Count() != 0)
                     columnDeclaration.Append(" ");
 
-                foreach (var attribute in attributes)
+                int notFKConstraintsCounter = 0;
+                for(int j = 0; j < attributes.Count(); j++)
                 {
+                    var attribute = attributes[j];
                     if (AttributeService.IsForeignKey(attribute))
                     {
                         if(foreignKeys.Length > 0)
@@ -42,18 +46,33 @@ namespace DBLWD6.CustomORM.Services
                         foreignKeys.Append(
                             AttributeService
                             .GetForeignKeyExpression(attribute, modelProperty.Name));
+                        if(j < attributes.Count() - 1)
+                            foreignKeys.Append(" ");
                     }
                     else
+                    {
+                        if (notFKConstraintsCounter++ != 0)
+                            columnDeclaration.Append(" ");
+
                         columnDeclaration.Append(
                             AttributeService
                             .GetConstraintAsString(attribute));
+                    }
                 }
 
                 if (i < modelProperties.Length - 1)
                     columnDeclaration.Append(",\n");
                 else
                     columnDeclaration.Append("\n");
-                
+
+                string columnDeclarationAsString = columnDeclaration.ToString();
+                if (columnDeclarationAsString.Contains("UNIQUE") && columnDeclarationAsString.Contains("VARCHAR(MAX)"))
+                    columnDeclaration.Replace("VARCHAR(MAX)", "VARCHAR(255)");
+
+
+
+
+
                 tableColumns.Append(columnDeclaration);
             }
             tableColumns.Append(foreignKeys);
@@ -61,15 +80,15 @@ namespace DBLWD6.CustomORM.Services
             string tableName = typeof(T).Name;
 
             string createTableQuery = $"""
-                                           USE {dbName};
-
-                                           IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = '{tableName}' AND type = 'U')
-                                           BEGIN
-                                               CREATE TABLE [{tableName}](
-                                                   {tableColumns.ToString()}
-                                               );
-                                           END;
+                                               IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = '{tableName}' AND type = 'U')
+                                               BEGIN
+                                                   CREATE TABLE [{tableName}](
+                                                       {tableColumns.ToString()}
+                                                   );
+                                               END;
                                        """;
+
+
 
             return new SQLEntity(tableName, createTableQuery);
         }
@@ -117,25 +136,25 @@ namespace DBLWD6.CustomORM.Services
             }
 
             string addProcedureQuery = $"""
-            USE {dbName};
-
             IF NOT EXISTS (SELECT * FROM sys.procedures WHERE name = '{procedureName}' AND type = 'P')
             BEGIN
-                CREATE PROCEDURE [{procedureName}]
-                (
-                    {parameters}
-                )
-                AS
-                BEGIN
-                    INSERT INTO [{tableName}]
+                EXEC('
+                    CREATE PROCEDURE [{procedureName}]
                     (
-                        {columnNames}
+                        {parameters}
                     )
-                    VALUES
-                    (
-                        {values}
-                    );
-                END
+                    AS
+                    BEGIN
+                        INSERT INTO [{tableName}]
+                        (
+                            {columnNames}
+                        )
+                        VALUES
+                        (
+                            {values}
+                        );
+                    END
+                ')
             END;
             """;
 
@@ -193,21 +212,21 @@ namespace DBLWD6.CustomORM.Services
             }
 
             string updateProcedureQuery = $"""
-            USE {dbName};
-
             IF NOT EXISTS (SELECT * FROM sys.procedures WHERE name = '{procedureName}' AND type = 'P')
             BEGIN
-                CREATE PROCEDURE [{procedureName}]
-                (
-                    {parameters}
-                )
-                AS
-                BEGIN
-                    UPDATE [{tableName}]
-                    SET
-                        {setStatements}
-                    WHERE {primaryKeyProperty.Name} = @{primaryKeyProperty.Name}Var;
-                END
+                EXEC('
+                    CREATE PROCEDURE [{procedureName}]
+                    (
+                        {parameters}
+                    )
+                    AS
+                    BEGIN
+                        UPDATE [{tableName}]
+                        SET
+                            {setStatements}
+                        WHERE {primaryKeyProperty.Name} = @{primaryKeyProperty.Name}Var;
+                    END
+                ')
             END;
             """;
 
@@ -235,15 +254,17 @@ namespace DBLWD6.CustomORM.Services
 
             IF NOT EXISTS (SELECT * FROM sys.procedures WHERE name = '{procedureName}' AND type = 'P')
             BEGIN
-                CREATE PROCEDURE [{procedureName}]
-                (
-                    {paramName} {sqlType}
-                )
-                AS
-                BEGIN
-                    DELETE FROM [{tableName}]
-                    WHERE {primaryKeyProperty.Name} = {paramName};
-                END
+                EXEC('
+                    CREATE PROCEDURE [{procedureName}]
+                    (
+                        {paramName} {sqlType}
+                    )
+                    AS
+                    BEGIN
+                        DELETE FROM [{tableName}]
+                        WHERE {primaryKeyProperty.Name} = {paramName};
+                    END
+                ')
             END;
             """;
 
@@ -266,20 +287,20 @@ namespace DBLWD6.CustomORM.Services
             string sqlType = mapper.GetTSQLType(primaryKeyProperty.PropertyType);
 
             string selectByIdProcedureQuery = $"""
-            USE {dbName};
-
             IF NOT EXISTS (SELECT * FROM sys.procedures WHERE name = '{procedureName}' AND type = 'P')
             BEGIN
-                CREATE PROCEDURE [{procedureName}]
-                (
-                    {paramName} {sqlType}
-                )
-                AS
-                BEGIN
-                    SELECT *
-                    FROM [{tableName}]
-                    WHERE {primaryKeyProperty.Name} = {paramName};
-                END
+                EXEC('
+                    CREATE PROCEDURE [{procedureName}]
+                    (
+                        {paramName} {sqlType}
+                    )
+                    AS
+                    BEGIN
+                        SELECT *
+                        FROM [{tableName}]
+                        WHERE {primaryKeyProperty.Name} = {paramName};
+                    END
+                ')
             END;
             """;
 
@@ -291,18 +312,18 @@ namespace DBLWD6.CustomORM.Services
             string procedureName = $"PRC_SelectAll{tableName}";
 
             string selectAllProcedureQuery = $"""
-                                                  USE {dbName};
-
-                                                  IF NOT EXISTS (SELECT * FROM sys.procedures WHERE name = '{procedureName}' AND type = 'P')
-                                                  BEGIN
-                                                      CREATE PROCEDURE [{procedureName}]
-                                                      AS
-                                                      BEGIN
-                                                          SELECT *
-                                                          FROM [{tableName}];
-                                                      END
-                                                  END;
-                                              """;
+            IF NOT EXISTS (SELECT * FROM sys.procedures WHERE name = '{procedureName}' AND type = 'P')
+            BEGIN
+                EXEC('
+                    CREATE PROCEDURE [{procedureName}]
+                    AS
+                    BEGIN
+                        SELECT *
+                        FROM [{tableName}];
+                    END
+                ')
+            END;
+            """;
 
             return new SQLEntity(procedureName, selectAllProcedureQuery);
         }
@@ -362,17 +383,17 @@ namespace DBLWD6.CustomORM.Services
             string whereClause = ProcessExpression(predicate.Body);
 
             string selectByConditionsProcedureQuery = $"""
-            USE {dbName};
-
             IF NOT EXISTS (SELECT * FROM sys.procedures WHERE name = '{procedureName}' AND type = 'P')
             BEGIN
-                CREATE PROCEDURE [{procedureName}]
-                AS
-                BEGIN
-                    SELECT *
-                    FROM [{tableName}]
-                    WHERE {whereClause};
-                END
+                EXEC('
+                    CREATE PROCEDURE [{procedureName}]
+                    AS
+                    BEGIN
+                        SELECT *
+                        FROM [{tableName}]
+                        WHERE {whereClause};
+                    END
+                ')
             END;
             """;
 
@@ -382,12 +403,10 @@ namespace DBLWD6.CustomORM.Services
         {
             string tableName = typeof(T).Name;
             string createTableQuery = $"""
-                                           USE {dbName};
-
-                                           IF EXISTS (SELECT * FROM sys.tables WHERE name = '{tableName}' AND type = 'U')
-                                           BEGIN
-                                               DROP TABLE [{tableName}];
-                                           END;
+                                               IF EXISTS (SELECT * FROM sys.tables WHERE name = '{tableName}' AND type = 'U')
+                                               BEGIN
+                                                   DROP TABLE [{tableName}];
+                                               END;
                                        """;
 
             return new SQLEntity(tableName, createTableQuery);

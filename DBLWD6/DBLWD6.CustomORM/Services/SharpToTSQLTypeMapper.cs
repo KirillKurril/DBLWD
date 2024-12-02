@@ -20,7 +20,7 @@
                 return "DATETIMEOFFSET";
             if (IsTime(type))
                 return "TIME";
-            throw new InvalidCastException("Unable to convert into T-SQL data type");
+            throw new InvalidCastException($"Unable to convert into T-SQL data type: {type}");
         }
         Type EnsureNotNullable(Type type)
         {
@@ -47,7 +47,8 @@
         bool IsFloat(Type type)
         {
             return type == typeof(float) ||
-                   type == typeof(double);
+                   type == typeof(double) ||
+                   type == typeof(decimal);
         }
         bool IsBoolean(Type type)
         {

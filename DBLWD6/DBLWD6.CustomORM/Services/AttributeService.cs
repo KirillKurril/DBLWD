@@ -51,8 +51,8 @@ namespace DBLWD6.CustomORM.Services
             {
                 return "UNIQUE";
             }
-
-            throw new ArgumentException("Unsupported attribute type", nameof(attribute));
+            return string.Empty;
+            //throw new ArgumentException("Unsupported attribute type", nameof(attribute));
         }
     }
 }

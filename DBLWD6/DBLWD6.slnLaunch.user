@@ -1,0 +1,16 @@
+[
+  {
+    "Name": "Api(https)&Client",
+    "Projects": [
+      {
+        "Path": "DBLWD6.API\\DBLWD6.API.csproj",
+        "Action": "Start",
+        "DebugTarget": "https"
+      },
+      {
+        "Path": "DBLWD6.Client\\DBLWD6.Client.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

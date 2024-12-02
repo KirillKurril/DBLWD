@@ -1,10 +1,11 @@
 using DBLWD6.API.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DBLWD6.API
 {
     public class Program
     {
-        public async static void Main(string[] args)
+        public async static Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
             ConfigureServices(builder);
@@ -15,11 +16,26 @@ namespace DBLWD6.API
             ConfigureEndpoints(app);
 
             app.Run();
+
+            Console.WriteLine("API started");
+            
         }
         private static void ConfigureServices(WebApplicationBuilder builder)
         {
             builder.Services.AddControllers();
-            builder.Services.AddSingleton<DbService>();
+            string connStr;
+            string dbName;
+            try
+            {
+                connStr = builder.Configuration.GetConnectionString("MicrosoftSQLServer");
+                dbName = builder.Configuration.GetSection("DbName").Value;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"----------> Unable to fetch db configuration strings:\n{ex.Message}");
+            }
+            
+            builder.Services.AddSingleton(provider => new DbService(connStr, dbName));
             builder.Services.AddScoped<ICategoryService, CategoryService>();
             builder.Services.AddScoped<IArticleService, ArticleService>();
             builder.Services.AddScoped<IFAQService, FAQService>();
@@ -39,8 +55,7 @@ namespace DBLWD6.API
 
         private static async Task InitializeDatabase(WebApplication app)
         {
-            var connStr = app.Configuration.GetConnectionString("MicrosoftSQLServer");
-            DbService dbService = new DbService(connStr, "DBLWD6");
+            var dbService = app.Services.GetRequiredService<DbService>();
             await dbService.InitDBConnection();
         }
 

@@ -1,7 +1,7 @@
 ﻿namespace DBLWD6.CustomORM.Attributes
 {
     [AttributeUsage(AttributeTargets.Property)]
-    public class ForeignKey : Attribute
+    public class ForeignKey :Attribute, ICustomORMAttribute
     {
         Type _targetType { get; }
         public string TargetProperty { get; }

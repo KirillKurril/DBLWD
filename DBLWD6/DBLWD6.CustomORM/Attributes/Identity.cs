@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DBLWD6.CustomORM.Attributes
 {
-    public class Identity : Attribute
+    public class Identity : Attribute, ICustomORMAttribute
     {
         public int Seed { get; set; }
         public int Increment { get; set; }

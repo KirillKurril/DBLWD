@@ -1,0 +1,13 @@
+D:\uni\DBLWD\DBLWD6\DBLWD6.CustomORM\bin\Debug\net8.0\DBLWD6.CustomORM.deps.json
+D:\uni\DBLWD\DBLWD6\DBLWD6.CustomORM\bin\Debug\net8.0\DBLWD6.CustomORM.dll
+D:\uni\DBLWD\DBLWD6\DBLWD6.CustomORM\bin\Debug\net8.0\DBLWD6.CustomORM.pdb
+D:\uni\DBLWD\DBLWD6\DBLWD6.CustomORM\obj\Debug\net8.0\DBLWD6.CustomORM.csproj.AssemblyReference.cache
+D:\uni\DBLWD\DBLWD6\DBLWD6.CustomORM\obj\Debug\net8.0\DBLWD6.CustomORM.GeneratedMSBuildEditorConfig.editorconfig
+D:\uni\DBLWD\DBLWD6\DBLWD6.CustomORM\obj\Debug\net8.0\DBLWD6.CustomORM.AssemblyInfoInputs.cache
+D:\uni\DBLWD\DBLWD6\DBLWD6.CustomORM\obj\Debug\net8.0\DBLWD6.CustomORM.AssemblyInfo.cs
+D:\uni\DBLWD\DBLWD6\DBLWD6.CustomORM\obj\Debug\net8.0\DBLWD6.CustomORM.csproj.CoreCompileInputs.cache
+D:\uni\DBLWD\DBLWD6\DBLWD6.CustomORM\obj\Debug\net8.0\DBLWD6.CustomORM.sourcelink.json
+D:\uni\DBLWD\DBLWD6\DBLWD6.CustomORM\obj\Debug\net8.0\DBLWD6.CustomORM.dll
+D:\uni\DBLWD\DBLWD6\DBLWD6.CustomORM\obj\Debug\net8.0\refint\DBLWD6.CustomORM.dll
+D:\uni\DBLWD\DBLWD6\DBLWD6.CustomORM\obj\Debug\net8.0\DBLWD6.CustomORM.pdb
+D:\uni\DBLWD\DBLWD6\DBLWD6.CustomORM\obj\Debug\net8.0\ref\DBLWD6.CustomORM.dll
