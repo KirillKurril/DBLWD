@@ -1,4 +1,5 @@
 using System.Net.Http.Json;
+using System.Text;
 using System.Text.Json;
 
 namespace DBLWD6.Client.Services
@@ -109,14 +110,19 @@ namespace DBLWD6.Client.Services
                 includePickupPoints = Console.ReadLine()?.ToLower() == "y";
             }
 
-            var url = $"{_baseUrl}?page={page}&itemsPerPage={itemsPerPage}&categoryId={categoryId}" +
-                     $"&includeCategory={includeCategory}&includeManufacturers={includeManufacturers}" +
-                     $"&includeSuppliers={includeSuppliers}&includePickupPoints={includePickupPoints}";
-            Console.WriteLine('\n' + url + '\n');
+            StringBuilder url = new($"{_baseUrl}?");
+            url.Append(page == null ? "" : $"page={page}&");
+            url.Append(itemsPerPage == null ? "" : $"itemsPerPage={itemsPerPage}&");
+            url.Append(categoryId == null ? "" : $"categoryId={categoryId}&");
+            url.Append(includeCategory == null ? "" : $"includeCategory={includeCategory}&");
+            url.Append(includeManufacturers == null ? "" : $"includeManufacturers={includeManufacturers}&");
+            url.Append(includeSuppliers == null ? "" : $"includeSuppliers={includeSuppliers}&");
+            url.Append(includePickupPoints == null ? "" : $"includePickupPoints={includePickupPoints}");
+            Console.WriteLine('\n' + url.ToString() + '\n');
 
             try
             {
-                var response = await _httpClient.GetAsync(url);
+                var response = await _httpClient.GetAsync(url.ToString());
                 var content = await response.Content.ReadAsStringAsync();
                 Console.WriteLine($"\nResponse:\n{JsonSerializer.Serialize(content, new JsonSerializerOptions { WriteIndented = true })}");
             }

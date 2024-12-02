@@ -27,7 +27,8 @@ namespace DBLWD6.API
             string dbName;
             try
             {
-                connStr = builder.Configuration.GetConnectionString("MicrosoftSQLServer");
+                //connStr = builder.Configuration.GetConnectionString("MicrosoftSQLServer");
+                connStr = builder.Configuration.GetConnectionString("MicrosoftSQLServerMiruku");
                 dbName = builder.Configuration.GetSection("DbName").Value;
             }
             catch (Exception ex)

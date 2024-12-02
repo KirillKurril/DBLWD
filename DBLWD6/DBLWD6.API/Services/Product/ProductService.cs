@@ -15,15 +15,15 @@ namespace DBLWD6.API.Services
         {
             itemsPerPage = itemsPerPage ?? int.Parse(_configuration.GetSection("ItemsPerPageDefault").Value!);
             page = page ?? 1;
-            int startIndex = page.Value * itemsPerPage.Value;
-            int endIndex = (page.Value + 1) * itemsPerPage.Value;
+            int startIndex = (page.Value - 1) * itemsPerPage.Value;
+            int endIndex = page.Value * itemsPerPage.Value;
             IEnumerable<Product> products;
             Expression<Func<Product, bool>> predicate;
 
             if (categoryId == null)
-                predicate = p => p.Id >= startIndex && p.Id < endIndex;
+                predicate = p => p.Id > startIndex && p.Id <= endIndex;
             else
-                predicate = p => p.Id >= startIndex && p.Id < endIndex && p.CategoryId == categoryId;
+                predicate = p => p.Id > startIndex && p.Id <= endIndex && p.CategoryId == categoryId;
 
             try
             {
@@ -42,7 +42,6 @@ namespace DBLWD6.API.Services
                     }
                     if (includeManufacturers.Value || includeSuppliers.Value)
                     {
-                        // Get supplies for this product
                         Expression<Func<Supply, bool>> supplyPredicate = s => s.ProductId == product.Id;
                         var supplies = await _dbService.SupplyTable.GetWithConditions(supplyPredicate);
 
@@ -76,7 +75,6 @@ namespace DBLWD6.API.Services
                     }
                     if (includePickupPoints.Value)
                     {
-                        // Get pickup points through the ProductPickupPoint junction table
                         Expression<Func<ProductPickupPoint, bool>> ppPredicate = pp => pp.ProductId == product.Id;
                         var productPickupPoints = await _dbService.ProductPickupPointTable.GetWithConditions(ppPredicate);
                         
