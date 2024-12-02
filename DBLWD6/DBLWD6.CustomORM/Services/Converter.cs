@@ -171,6 +171,8 @@ namespace DBLWD6.CustomORM.Services
             StringBuilder parameters = new();
             StringBuilder setStatements = new();
 
+            parameters.Append($"@{primaryKeyProperty.Name}Var").Append(" ").Append(mapper.GetTSQLType(primaryKeyProperty.PropertyType));
+
             foreach (var property in modelProperties)
             {
                 bool nonMapped = property.GetCustomAttributes(true).Any(a => a is NonMapped);
@@ -180,29 +182,21 @@ namespace DBLWD6.CustomORM.Services
                 bool isIdentity = property.GetCustomAttributes(true).Any(attr => attr is Identity);
                 bool isPrimaryKey = property.GetCustomAttributes(true).Any(attr => attr is PrimaryKey);
                 
-                if (!isIdentity)  
+                if (!isIdentity && !isPrimaryKey)  
                 {
                     string paramName = $"@{property.Name}Var";
                     string sqlType = mapper.GetTSQLType(property.PropertyType);
                     bool isNotNull = property.GetCustomAttributes(true).Any(attr => attr is NonNull);
 
-                    if (parameters.Length > 0)
-                    {
-                        parameters.Append(",\n\t");
-                        if (!isPrimaryKey)
-                            setStatements.Append(",\n\t");
-                    }
-
+                    parameters.Append(",\n\t");
+                    if (setStatements.Length > 0)
+                        setStatements.Append(",\n\t");
+                    
                     parameters.Append(paramName).Append(" ").Append(sqlType);
-                    if (!isNotNull && !isPrimaryKey)  
-                    {
+                    if (!isNotNull)
                         parameters.Append(" = NULL");
-                    }
 
-                    if (!isPrimaryKey)  
-                    {
-                        setStatements.Append(property.Name).Append(" = ").Append(paramName);
-                    }
+                    setStatements.Append(property.Name).Append(" = ").Append(paramName);
                 }
             }
 
@@ -217,8 +211,7 @@ namespace DBLWD6.CustomORM.Services
                     AS
                     BEGIN
                         UPDATE [{tableName}]
-                        SET
-                            {setStatements}
+                        SET {setStatements}
                         WHERE {primaryKeyProperty.Name} = @{primaryKeyProperty.Name}Var;
                     END
                 ')
@@ -376,7 +369,6 @@ namespace DBLWD6.CustomORM.Services
 
             throw new InvalidOperationException($"Expression type {expression.GetType().Name} is not supported");
         }
-
         private static string FormatValueForSql(object value)
         {
             if (value is string stringValue)

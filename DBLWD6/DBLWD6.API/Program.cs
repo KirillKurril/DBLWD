@@ -36,7 +36,7 @@ namespace DBLWD6.API
                 throw new Exception($"----------> Unable to fetch db configuration strings:\n{ex.Message}");
             }
             
-            builder.Services.AddSingleton(provider => new DbService(connStr, dbName));
+            builder.Services.AddSingleton(provider => new DbService(connStr, dbName, connStr));
             builder.Services.AddScoped<ICategoryService, CategoryService>();
             builder.Services.AddScoped<IArticleService, ArticleService>();
             builder.Services.AddScoped<IFAQService, FAQService>();
@@ -58,6 +58,7 @@ namespace DBLWD6.API
         {
             var dbService = app.Services.GetRequiredService<DbService>();
             await dbService.InitDBConnection();
+            await dbService.SetTrigger();
         }
 
         private static void ConfigureMiddleware(WebApplication app)

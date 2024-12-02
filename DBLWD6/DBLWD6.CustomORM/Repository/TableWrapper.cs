@@ -128,10 +128,19 @@ namespace DBLWD6.CustomORM.Repository
                     command.CommandText = _updateProcedureName;
                     command.CommandType = CommandType.StoredProcedure;
 
-                    foreach (var prop in _modelProperties.Where(p => p.GetValue(newObject) != null && !p.GetCustomAttributes(true).Any(attr => attr is PrimaryKey)))
+                    foreach (var prop in _modelProperties.Where(
+                        p => p.GetValue(newObject) != null &&
+                        !p.GetCustomAttributes(true).Any(attr => attr is NonMapped)))
                     {
+                        SqlParameter param = command.CreateParameter();
+                        if (prop.GetCustomAttributes(true).Any(attr => attr is PrimaryKey))
+                        {
+                            param.ParameterName = $"@{prop.Name}Var";
+                            param.Value = prevObjectId;
+                            command.Parameters.Add(param);
+                            continue;
+                        }
                         var value = prop.GetValue(newObject);
-                        var param = command.CreateParameter();
                         param.ParameterName = $"@{prop.Name}Var";
                         param.Value = value;
                         command.Parameters.Add(param);

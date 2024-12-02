@@ -116,7 +116,6 @@ namespace DBLWD6.API.Services
                 }
                 if (includeManufacturers.Value || includeSuppliers.Value)
                 {
-                    // Get supplies for this product
                     Expression<Func<Supply, bool>> supplyPredicate = s => s.ProductId == product.Id;
                     var supplies = await _dbService.SupplyTable.GetWithConditions(supplyPredicate);
 
@@ -150,7 +149,6 @@ namespace DBLWD6.API.Services
                 }
                 if (includePickupPoints.Value)
                 {
-                    // Get pickup points through the ProductPickupPoint junction table
                     Expression<Func<ProductPickupPoint, bool>> ppPredicate = pp => pp.ProductId == product.Id;
                     var productPickupPoints = await _dbService.ProductPickupPointTable.GetWithConditions(ppPredicate);
                     

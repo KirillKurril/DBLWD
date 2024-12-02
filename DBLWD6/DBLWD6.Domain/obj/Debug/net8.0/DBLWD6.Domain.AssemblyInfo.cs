@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DBLWD6.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+430a28658f2148c9e8b295fa8165fd05af786a20")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2051885a484c883520830cd10404d52b6a35af86")]
 [assembly: System.Reflection.AssemblyProductAttribute("DBLWD6.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DBLWD6.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
