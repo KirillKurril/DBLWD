@@ -5,7 +5,7 @@
         [NonNull]
         public int Code { get; set; }
         [NonNull]
-        public double DisCount { get; set; }
+        public double Discount { get; set; }
         [NonNull]
         public DateTime Expiration {  get; set; }
     }

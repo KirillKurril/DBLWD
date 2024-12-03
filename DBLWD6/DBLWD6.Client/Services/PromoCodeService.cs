@@ -112,7 +112,7 @@ namespace DBLWD6.Client.Services
                         Console.WriteLine("\n----------------------------------------");
                         Console.WriteLine($"ID: {promoCode.Id}");
                         Console.WriteLine($"Code: {promoCode.Code}");
-                        Console.WriteLine($"Discount: {promoCode.DisCount:P0}");
+                        Console.WriteLine($"Discount: {promoCode.Discount:P0}");
                         Console.WriteLine($"Expiration: {promoCode.Expiration:g}");
                         Console.WriteLine($"Status: {(promoCode.Expiration > DateTime.Now ? "Active" : "Expired")}");
                         Console.WriteLine("----------------------------------------");
@@ -160,7 +160,7 @@ namespace DBLWD6.Client.Services
                     Console.WriteLine("\n----------------------------------------");
                     Console.WriteLine($"ID: {promoCode.Id}");
                     Console.WriteLine($"Code: {promoCode.Code}");
-                    Console.WriteLine($"Discount: {promoCode.DisCount:P0}");
+                    Console.WriteLine($"Discount: {promoCode.Discount:P0}");
                     Console.WriteLine($"Expiration: {promoCode.Expiration:g}");
                     Console.WriteLine($"Status: {(promoCode.Expiration > DateTime.Now ? "Active" : "Expired")}");
                     Console.WriteLine("----------------------------------------");
@@ -191,7 +191,7 @@ namespace DBLWD6.Client.Services
                 promoCode = new PromoCode
                 {
                     Code = 12345,
-                    DisCount = 0.15, // 15% discount
+                    Discount = 0.15, // 15% discount
                     Expiration = DateTime.Now.AddDays(30)
                 };
             }
@@ -202,7 +202,7 @@ namespace DBLWD6.Client.Services
                 promoCode.Code = int.Parse(Console.ReadLine() ?? "12345");
 
                 Console.Write("Enter discount (0-1, e.g., 0.15 for 15%): ");
-                promoCode.DisCount = double.Parse(Console.ReadLine() ?? "0.15");
+                promoCode.Discount = double.Parse(Console.ReadLine() ?? "0.15");
 
                 Console.Write("Enter expiration days from now: ");
                 int days = int.Parse(Console.ReadLine() ?? "30");
@@ -239,7 +239,7 @@ namespace DBLWD6.Client.Services
                 {
                     Id = 1,
                     Code = 54321,
-                    DisCount = 0.20, // 20% discount
+                    Discount = 0.20, // 20% discount
                     Expiration = DateTime.Now.AddDays(60)
                 };
             }
@@ -253,7 +253,7 @@ namespace DBLWD6.Client.Services
                 promoCode.Code = int.Parse(Console.ReadLine() ?? "54321");
 
                 Console.Write("Enter new discount (0-1, e.g., 0.20 for 20%): ");
-                promoCode.DisCount = double.Parse(Console.ReadLine() ?? "0.20");
+                promoCode.Discount = double.Parse(Console.ReadLine() ?? "0.20");
 
                 Console.Write("Enter new expiration days from now: ");
                 int days = int.Parse(Console.ReadLine() ?? "60");

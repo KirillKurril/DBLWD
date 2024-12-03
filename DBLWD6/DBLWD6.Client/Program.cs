@@ -11,14 +11,19 @@ namespace DBLWD6.Client
             {
                 Console.Clear();
                 Console.WriteLine("API Demonstration Client");
-                Console.WriteLine("1. Product Service Demonstration");
-                Console.WriteLine("2. Manufacturer Service Demonstration");
-                Console.WriteLine("3. PickupPoint Service Demonstration");
-                Console.WriteLine("4. Order Service Demonstration");
-                Console.WriteLine("5. User Service Demonstration");
-                Console.WriteLine("6. Article Service Demonstration");
-                Console.WriteLine("7. PromoCode Service Demonstration");
-                Console.WriteLine("8. Review Service Demonstration");
+                Console.WriteLine("1. Product Service");
+                Console.WriteLine("2. Category Service");
+                Console.WriteLine("3. Manufacturer Service");
+                Console.WriteLine("4. Supplier Service");
+                Console.WriteLine("5. Partner Service");
+                Console.WriteLine("6. PickupPoint Service");
+                Console.WriteLine("7. Order Service");
+                Console.WriteLine("8. User Service");
+                Console.WriteLine("9. PromoCode Service");
+                Console.WriteLine("10. Vacancy Service");
+                Console.WriteLine("11. Article Service");
+                Console.WriteLine("12. FAQ Service");
+                Console.WriteLine("13. Review Service");
                 Console.WriteLine("0. Exit");
 
                 Console.Write("\nSelect option: ");
@@ -27,34 +32,54 @@ namespace DBLWD6.Client
                 switch (choice)
                 {
                     case "1":
-                        var productDemo = new ProductService(_baseUrl);
-                        await productDemo.DemonstrateAllMethods();
+                        var productService = new ProductService(_baseUrl);
+                        await productService.DemonstrateAllMethods();
                         break;
                     case "2":
+                        var categoryService = new CategoryService(_baseUrl);
+                        await categoryService.DemonstrateAllMethods();
+                        break;
+                    case "3":
                         var manufacturerService = new ManufacturerService(_baseUrl);
                         await manufacturerService.DemonstrateAllMethods();
                         break;
-                    case "3":
+                    case "4":
+                        var supplierService = new SupplierService(_baseUrl);
+                        await supplierService.DemonstrateAllMethods();
+                        break;
+                    case "5":
+                        var partnerService = new PartnerService(_baseUrl);
+                        await partnerService.DemonstrateAllMethods();
+                        break;
+                    case "6":
                         var pickupPointService = new PickupPointService(_baseUrl);
                         await pickupPointService.DemonstrateAllMethods();
                         break;
-                    case "4":
-                        var categoryService = new CategoryService(_baseUrl);
-                        await categoryService.DemonstrateAllMethods();
-                        break;                        
-                    case "5":
-                        var articleService = new ArticleService(_baseUrl);
-                        await articleService.DemonstrateAllMethods();
-                        break;
-                    case "6":
-                        var FAQService = new FAQService(_baseUrl);
-                        await FAQService.DemonstrateAllMethods();
-                        break;                        
                     case "7":
+                        var orderService = new OrderService(_baseUrl);
+                        await orderService.DemonstrateAllMethods();
+                        break;
+                    case "8":
+                        var userService = new UserService(_baseUrl);
+                        await userService.DemonstrateAllMethods();
+                        break;
+                    case "9":
                         var promoCodeService = new PromoCodeService(_baseUrl);
                         await promoCodeService.DemonstrateAllMethods();
                         break;
-                    case "8":
+                    case "10":
+                        var vacancyService = new VacancyService(_baseUrl);
+                        await vacancyService.DemonstrateAllMethods();
+                        break;
+                    case "11":
+                        var articleService = new ArticleService(_baseUrl);
+                        await articleService.DemonstrateAllMethods();
+                        break;
+                    case "12":
+                        var faqService = new FAQService(_baseUrl);
+                        await faqService.DemonstrateAllMethods();
+                        break;
+                    case "13":
                         var reviewService = new ReviewService(_baseUrl);
                         await reviewService.DemonstrateAllMethods();
                         break;
@@ -63,6 +88,12 @@ namespace DBLWD6.Client
                     default:
                         Console.WriteLine("Invalid option");
                         break;
+                }
+
+                if (choice != "0")
+                {
+                    Console.WriteLine("\nPress any key to return to main menu...");
+                    Console.ReadKey();
                 }
             }
         }

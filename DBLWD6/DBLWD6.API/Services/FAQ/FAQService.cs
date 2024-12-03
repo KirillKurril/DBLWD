@@ -19,8 +19,8 @@ namespace DBLWD6.API.Services
             itemsPerPage = itemsPerPage ?? int.Parse(_configuration.GetSection("ItemsPerPageDefault").Value!);
             page = page ?? 1;
             includeArticle = includeArticle ?? false;
-            int startIndex = page.Value * itemsPerPage.Value;
-            int endIndex = (page.Value + 1) * itemsPerPage.Value;
+            int startIndex = (page.Value - 1) * itemsPerPage.Value;
+            int endIndex = page.Value * itemsPerPage.Value;
             IEnumerable<FAQ> faqs;
             Expression<Func<FAQ, bool>> predicate = f => f.Id >= startIndex && f.Id < endIndex;
 

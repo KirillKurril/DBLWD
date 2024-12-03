@@ -14,11 +14,16 @@ namespace DBLWD6.Client.Services
     {
         private readonly HttpClient _httpClient;
         private readonly string _baseUrl;
+        private readonly JsonSerializerOptions _jsonSerializerOptions;
 
         public UserService(string baseUrl)
         {
             _httpClient = new HttpClient();
             _baseUrl = baseUrl + "User";
+            _jsonSerializerOptions = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
         }
 
         public async Task DemonstrateAllMethods()
@@ -85,7 +90,6 @@ namespace DBLWD6.Client.Services
             
             int? page = null;
             int? itemsPerPage = null;
-            bool includeProfile = false;
 
             if (choice == "1")
             {
@@ -101,25 +105,14 @@ namespace DBLWD6.Client.Services
                 Console.Write("Enter items per page (press Enter to skip): ");
                 var itemsInput = Console.ReadLine();
                 if (!string.IsNullOrEmpty(itemsInput)) itemsPerPage = int.Parse(itemsInput);
-
-                Console.Write("Include profile? (y/n): ");
-                includeProfile = Console.ReadLine()?.ToLower() == "y";
             }
-
-            StringBuilder url = new($"{_baseUrl}?");
-            url.Append(page == null ? "" : $"page={page}&");
-            url.Append(itemsPerPage == null ? "" : $"itemsPerPage={itemsPerPage}&");
-            url.Append($"includeProfile={includeProfile}");
-            Console.WriteLine('\n' + url.ToString() + '\n');
 
             try
             {
-                var response = await _httpClient.GetAsync(url.ToString());
-                var content = await response.Content.ReadAsStringAsync();
-                var users = JsonSerializer.Deserialize<IEnumerable<User>>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
+                var users = await GetUsersCollection(page, itemsPerPage);
                 foreach (var user in users)
                 {
+                    Console.WriteLine("\n----------------------------------------");
                     Console.WriteLine($"ID: {user.Id}");
                     Console.WriteLine($"Email: {user.Email}");
                     Console.WriteLine($"Username: {user.Username}");
@@ -128,12 +121,12 @@ namespace DBLWD6.Client.Services
                     Console.WriteLine($"Is Staff: {user.IsStaff}");
                     Console.WriteLine($"Is Active: {user.IsActive}");
                     Console.WriteLine($"Date Joined: {user.DateJoined}");
-                    if (includeProfile && user.Profile != null)
+                    if (user.Profile != null)
                     {
-                        Console.WriteLine($"Profile Photo: {user.Profile.Photo}");
-                        Console.WriteLine($"Profile Is Non-Secretive: {user.Profile.NonSecretive}");
+                        Console.WriteLine("\nProfile Information:");
+                        Console.WriteLine($"Photo: {user.Profile.Photo}");
+                        Console.WriteLine($"Non-Secretive: {user.Profile.NonSecretive}");
                     }
-                    Console.WriteLine();
                 }
             }
             catch (Exception ex)
@@ -154,23 +147,17 @@ namespace DBLWD6.Client.Services
                 return;
             }
 
-            Console.Write("Include profile? (y/n): ");
-            bool includeProfile = Console.ReadLine()?.ToLower() == "y";
-
             try
             {
-                var response = await _httpClient.GetAsync($"{_baseUrl}/{id}?includeProfile={includeProfile}");
-                
-                if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                var user = await GetUserById(id);
+                if (user == null)
                 {
                     Console.WriteLine("User not found");
                     return;
                 }
 
-                var content = await response.Content.ReadAsStringAsync();
-                var user = JsonSerializer.Deserialize<User>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
-                Console.WriteLine($"\nID: {user.Id}");
+                Console.WriteLine("\n----------------------------------------");
+                Console.WriteLine($"ID: {user.Id}");
                 Console.WriteLine($"Email: {user.Email}");
                 Console.WriteLine($"Username: {user.Username}");
                 Console.WriteLine($"First Name: {user.FirstName}");
@@ -178,10 +165,11 @@ namespace DBLWD6.Client.Services
                 Console.WriteLine($"Is Staff: {user.IsStaff}");
                 Console.WriteLine($"Is Active: {user.IsActive}");
                 Console.WriteLine($"Date Joined: {user.DateJoined}");
-                if (includeProfile && user.Profile != null)
+                if (user.Profile != null)
                 {
-                    Console.WriteLine($"Profile Photo: {user.Profile.Photo}");
-                    Console.WriteLine($"Profile Is Non-Secretive: {user.Profile.NonSecretive}");
+                    Console.WriteLine("\nProfile Information:");
+                    Console.WriteLine($"Photo: {user.Profile.Photo}");
+                    Console.WriteLine($"Non-Secretive: {user.Profile.NonSecretive}");
                 }
             }
             catch (Exception ex)
@@ -198,23 +186,17 @@ namespace DBLWD6.Client.Services
             Console.Write("Enter user email: ");
             string email = Console.ReadLine();
 
-            Console.Write("Include profile? (y/n): ");
-            bool includeProfile = Console.ReadLine()?.ToLower() == "y";
-
             try
             {
-                var response = await _httpClient.GetAsync($"{_baseUrl}/byEmail/{email}?includeProfile={includeProfile}");
-                
-                if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                var user = await GetUserByEmail(email);
+                if (user == null)
                 {
                     Console.WriteLine("User not found");
                     return;
                 }
 
-                var content = await response.Content.ReadAsStringAsync();
-                var user = JsonSerializer.Deserialize<User>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
-                Console.WriteLine($"\nID: {user.Id}");
+                Console.WriteLine("\n----------------------------------------");
+                Console.WriteLine($"ID: {user.Id}");
                 Console.WriteLine($"Email: {user.Email}");
                 Console.WriteLine($"Username: {user.Username}");
                 Console.WriteLine($"First Name: {user.FirstName}");
@@ -222,10 +204,11 @@ namespace DBLWD6.Client.Services
                 Console.WriteLine($"Is Staff: {user.IsStaff}");
                 Console.WriteLine($"Is Active: {user.IsActive}");
                 Console.WriteLine($"Date Joined: {user.DateJoined}");
-                if (includeProfile && user.Profile != null)
+                if (user.Profile != null)
                 {
-                    Console.WriteLine($"Profile Photo: {user.Profile.Photo}");
-                    Console.WriteLine($"Profile Is Non-Secretive: {user.Profile.NonSecretive}");
+                    Console.WriteLine("\nProfile Information:");
+                    Console.WriteLine($"Photo: {user.Profile.Photo}");
+                    Console.WriteLine($"Non-Secretive: {user.Profile.NonSecretive}");
                 }
             }
             catch (Exception ex)
@@ -267,15 +250,14 @@ namespace DBLWD6.Client.Services
 
             try
             {
-                var response = await _httpClient.PostAsJsonAsync(_baseUrl, user);
-                if (response.IsSuccessStatusCode)
+                var success = await AddUser(user);
+                if (success)
                 {
                     Console.WriteLine("User created successfully");
                 }
                 else
                 {
-                    var error = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine($"Error: {error}");
+                    Console.WriteLine("Failed to create user");
                 }
             }
             catch (Exception ex)
@@ -328,15 +310,14 @@ namespace DBLWD6.Client.Services
 
             try
             {
-                var response = await _httpClient.PutAsJsonAsync($"{_baseUrl}?prevId={prevId}", user);
-                if (response.IsSuccessStatusCode)
+                var success = await UpdateUser(user, prevId);
+                if (success)
                 {
                     Console.WriteLine("User updated successfully");
                 }
                 else
                 {
-                    var error = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine($"Error: {error}");
+                    Console.WriteLine("Failed to update user");
                 }
             }
             catch (Exception ex)
@@ -359,15 +340,14 @@ namespace DBLWD6.Client.Services
 
             try
             {
-                var response = await _httpClient.DeleteAsync($"{_baseUrl}/{id}");
-                if (response.IsSuccessStatusCode)
+                var success = await DeleteUser(id);
+                if (success)
                 {
                     Console.WriteLine("User deleted successfully");
                 }
                 else
                 {
-                    var error = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine($"Error: {error}");
+                    Console.WriteLine("Failed to delete user");
                 }
             }
             catch (Exception ex)
@@ -381,29 +361,22 @@ namespace DBLWD6.Client.Services
             Console.Clear();
             Console.WriteLine("Validate Credentials Demonstration");
 
-            var loginModel = new LoginModel();
-            
             Console.Write("Enter email: ");
-            loginModel.Email = Console.ReadLine();
+            var email = Console.ReadLine();
 
             Console.Write("Enter password: ");
-            loginModel.Password = Console.ReadLine();
+            var password = Console.ReadLine();
 
             try
             {
-                var response = await _httpClient.PostAsJsonAsync($"{_baseUrl}/validate", loginModel);
-                if (response.IsSuccessStatusCode)
+                var isValid = await ValidateCredentials(email, password);
+                if (isValid)
                 {
                     Console.WriteLine("Credentials are valid");
                 }
-                else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
-                {
-                    Console.WriteLine("Invalid credentials");
-                }
                 else
                 {
-                    var error = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine($"Error: {error}");
+                    Console.WriteLine("Invalid credentials");
                 }
             }
             catch (Exception ex)
@@ -411,11 +384,73 @@ namespace DBLWD6.Client.Services
                 Console.WriteLine($"Error: {ex.Message}");
             }
         }
-    }
 
-    public class LoginModel
-    {
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public async Task<IEnumerable<User>> GetUsersCollection(int? page, int? itemsPerPage)
+        {
+            string url = $"{_baseUrl}?includeProfile=true";
+            if (page.HasValue)
+            {
+                url += $"&page={page.Value}";
+            }
+            if (itemsPerPage.HasValue)
+            {
+                url += $"&itemsPerPage={itemsPerPage.Value}";
+            }
+
+            var response = await _httpClient.GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                return JsonSerializer.Deserialize<IEnumerable<User>>(content, _jsonSerializerOptions) ?? Array.Empty<User>();
+            }
+            return Array.Empty<User>();
+        }
+
+        public async Task<User?> GetUserById(int id)
+        {
+            var response = await _httpClient.GetAsync($"{_baseUrl}/{id}?includeProfile=true");
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                return JsonSerializer.Deserialize<User>(content, _jsonSerializerOptions);
+            }
+            return null;
+        }
+
+        public async Task<User?> GetUserByEmail(string email)
+        {
+            var response = await _httpClient.GetAsync($"{_baseUrl}/byEmail/{email}?includeProfile=true");
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                return JsonSerializer.Deserialize<User>(content, _jsonSerializerOptions);
+            }
+            return null;
+        }
+
+        public async Task<bool> AddUser(User user)
+        {
+            var response = await _httpClient.PostAsJsonAsync(_baseUrl, user);
+            return response.IsSuccessStatusCode;
+        }
+
+        public async Task<bool> UpdateUser(User user, int prevId)
+        {
+            var response = await _httpClient.PutAsJsonAsync($"{_baseUrl}?prevId={prevId}", user);
+            return response.IsSuccessStatusCode;
+        }
+
+        public async Task<bool> DeleteUser(int id)
+        {
+            var response = await _httpClient.DeleteAsync($"{_baseUrl}/{id}");
+            return response.IsSuccessStatusCode;
+        }
+
+        public async Task<bool> ValidateCredentials(string email, string password)
+        {
+            var credentials = new { Email = email, Password = password };
+            var response = await _httpClient.PostAsJsonAsync($"{_baseUrl}/validate", credentials);
+            return response.IsSuccessStatusCode;
+        }
     }
 }

@@ -3,16 +3,116 @@
   "WorkspaceRootPath": "D:\\Uni\\DBLWD\\DBLWD6\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{755B9AF6-6DA1-4AF1-856C-C141C8E0A17E}|DBLWD6.Domain\\DBLWD6.Domain.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.domain\\entities\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{755B9AF6-6DA1-4AF1-856C-C141C8E0A17E}|DBLWD6.Domain\\DBLWD6.Domain.csproj|solutionrelative:dblwd6.domain\\entities\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{755B9AF6-6DA1-4AF1-856C-C141C8E0A17E}|DBLWD6.Domain\\DBLWD6.Domain.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.domain\\entities\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{755B9AF6-6DA1-4AF1-856C-C141C8E0A17E}|DBLWD6.Domain\\DBLWD6.Domain.csproj|solutionrelative:dblwd6.domain\\entities\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03E129E4-6333-4917-9F59-F5DA8824EB44}|DBLWD6.Client\\DBLWD6.Client.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.client\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03E129E4-6333-4917-9F59-F5DA8824EB44}|DBLWD6.Client\\DBLWD6.Client.csproj|solutionrelative:dblwd6.client\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}|DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.customorm\\repository\\tablewrapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}|DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj|solutionrelative:dblwd6.customorm\\repository\\tablewrapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03E129E4-6333-4917-9F59-F5DA8824EB44}|DBLWD6.Client\\DBLWD6.Client.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03E129E4-6333-4917-9F59-F5DA8824EB44}|DBLWD6.Client\\DBLWD6.Client.csproj|solutionrelative:dblwd6.client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03E129E4-6333-4917-9F59-F5DA8824EB44}|DBLWD6.Client\\DBLWD6.Client.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.client\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03E129E4-6333-4917-9F59-F5DA8824EB44}|DBLWD6.Client\\DBLWD6.Client.csproj|solutionrelative:dblwd6.client\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.api\\services\\user\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|solutionrelative:dblwd6.api\\services\\user\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{755B9AF6-6DA1-4AF1-856C-C141C8E0A17E}|DBLWD6.Domain\\DBLWD6.Domain.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{755B9AF6-6DA1-4AF1-856C-C141C8E0A17E}|DBLWD6.Domain\\DBLWD6.Domain.csproj|solutionrelative:dblwd6.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.api\\models\\responsedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|solutionrelative:dblwd6.api\\models\\responsedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}|DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.customorm\\model\\sqlentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}|DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj|solutionrelative:dblwd6.customorm\\model\\sqlentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{755B9AF6-6DA1-4AF1-856C-C141C8E0A17E}|DBLWD6.Domain\\DBLWD6.Domain.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.domain\\entities\\vacancy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{755B9AF6-6DA1-4AF1-856C-C141C8E0A17E}|DBLWD6.Domain\\DBLWD6.Domain.csproj|solutionrelative:dblwd6.domain\\entities\\vacancy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{755B9AF6-6DA1-4AF1-856C-C141C8E0A17E}|DBLWD6.Domain\\DBLWD6.Domain.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.domain\\entities\\partner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{755B9AF6-6DA1-4AF1-856C-C141C8E0A17E}|DBLWD6.Domain\\DBLWD6.Domain.csproj|solutionrelative:dblwd6.domain\\entities\\partner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03E129E4-6333-4917-9F59-F5DA8824EB44}|DBLWD6.Client\\DBLWD6.Client.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.client\\services\\partnerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03E129E4-6333-4917-9F59-F5DA8824EB44}|DBLWD6.Client\\DBLWD6.Client.csproj|solutionrelative:dblwd6.client\\services\\partnerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.api\\services\\manufacturer\\manufacturerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|solutionrelative:dblwd6.api\\services\\manufacturer\\manufacturerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.api\\services\\review\\reviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|solutionrelative:dblwd6.api\\services\\review\\reviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.api\\services\\supplier\\supplierservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|solutionrelative:dblwd6.api\\services\\supplier\\supplierservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.api\\services\\vacancy\\vacancyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|solutionrelative:dblwd6.api\\services\\vacancy\\vacancyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.api\\services\\promocode\\promocodeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|solutionrelative:dblwd6.api\\services\\promocode\\promocodeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.api\\services\\product\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|solutionrelative:dblwd6.api\\services\\product\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.api\\services\\pickuppoint\\pickuppointservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|solutionrelative:dblwd6.api\\services\\pickuppoint\\pickuppointservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.api\\services\\partner\\partnerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|solutionrelative:dblwd6.api\\services\\partner\\partnerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.api\\services\\order\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|solutionrelative:dblwd6.api\\services\\order\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.api\\services\\faq\\faqservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|solutionrelative:dblwd6.api\\services\\faq\\faqservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.api\\services\\category\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|solutionrelative:dblwd6.api\\services\\category\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.api\\services\\article\\articleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|solutionrelative:dblwd6.api\\services\\article\\articleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.api\\controllers\\manufacturer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|solutionrelative:dblwd6.api\\controllers\\manufacturer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{03E129E4-6333-4917-9F59-F5DA8824EB44}|DBLWD6.Client\\DBLWD6.Client.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.client\\services\\promocodeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{03E129E4-6333-4917-9F59-F5DA8824EB44}|DBLWD6.Client\\DBLWD6.Client.csproj|solutionrelative:dblwd6.client\\services\\promocodeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.api\\services\\promocode\\promocodeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|solutionrelative:dblwd6.api\\services\\promocode\\promocodeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{755B9AF6-6DA1-4AF1-856C-C141C8E0A17E}|DBLWD6.Domain\\DBLWD6.Domain.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.domain\\entities\\promocode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{755B9AF6-6DA1-4AF1-856C-C141C8E0A17E}|DBLWD6.Domain\\DBLWD6.Domain.csproj|solutionrelative:dblwd6.domain\\entities\\promocode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.api\\controllers\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|solutionrelative:dblwd6.api\\controllers\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.api\\services\\promocode\\ipromocodeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,24 +127,12 @@
       "RelativeMoniker": "D:0:0:{755B9AF6-6DA1-4AF1-856C-C141C8E0A17E}|DBLWD6.Domain\\DBLWD6.Domain.csproj|solutionrelative:dblwd6.domain\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}|DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.customorm\\repository\\tablewrapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}|DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj|solutionrelative:dblwd6.customorm\\repository\\tablewrapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}|DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.customorm\\services\\converter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F084B59-19B5-4B98-9DC0-C42CFD60DF77}|DBLWD6.CustomORM\\DBLWD6.CustomORM.csproj|solutionrelative:dblwd6.customorm\\services\\converter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.api\\services\\product\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|solutionrelative:dblwd6.api\\services\\product\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.api\\controllers\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|solutionrelative:dblwd6.api\\controllers\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{03E129E4-6333-4917-9F59-F5DA8824EB44}|DBLWD6.Client\\DBLWD6.Client.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{03E129E4-6333-4917-9F59-F5DA8824EB44}|DBLWD6.Client\\DBLWD6.Client.csproj|solutionrelative:dblwd6.client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DFAE0F64-5B33-45BA-8B21-0FDB2FEB2CE6}|DBLWD6.API\\DBLWD6.API.csproj|d:\\uni\\dblwd\\dblwd6\\dblwd6.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -70,58 +158,383 @@
       "DocumentGroups": [
         {
           "DockedWidth": 305,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 9,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "SQlEntity.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\Model\\SQlEntity.cs",
+              "RelativeDocumentMoniker": "DBLWD6.CustomORM\\Model\\SQlEntity.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\Model\\SQlEntity.cs",
+              "RelativeToolTip": "DBLWD6.CustomORM\\Model\\SQlEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T01:43:10.445Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Vacancy.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Domain\\Entities\\Vacancy.cs",
+              "RelativeDocumentMoniker": "DBLWD6.Domain\\Entities\\Vacancy.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Domain\\Entities\\Vacancy.cs",
+              "RelativeToolTip": "DBLWD6.Domain\\Entities\\Vacancy.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T01:27:42.068Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "PickupPointService.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\PickupPoint\\PickupPointService.cs",
+              "RelativeDocumentMoniker": "DBLWD6.API\\Services\\PickupPoint\\PickupPointService.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\PickupPoint\\PickupPointService.cs",
+              "RelativeToolTip": "DBLWD6.API\\Services\\PickupPoint\\PickupPointService.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAQwBQAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T00:51:29.445Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "PartnerService.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\Partner\\PartnerService.cs",
+              "RelativeDocumentMoniker": "DBLWD6.API\\Services\\Partner\\PartnerService.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\Partner\\PartnerService.cs",
+              "RelativeToolTip": "DBLWD6.API\\Services\\Partner\\PartnerService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T00:51:20.349Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Domain\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "DBLWD6.Domain\\Entities\\User.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Domain\\Entities\\User.cs",
+              "RelativeToolTip": "DBLWD6.Domain\\Entities\\User.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAzwCQAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T00:07:31.012Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Client\\Program.cs",
+              "RelativeDocumentMoniker": "DBLWD6.Client\\Program.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Client\\Program.cs",
+              "RelativeToolTip": "DBLWD6.Client\\Program.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAnwD8AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T22:39:25.548Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TableWrapper.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\Repository\\TableWrapper.cs",
+              "RelativeDocumentMoniker": "DBLWD6.CustomORM\\Repository\\TableWrapper.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\Repository\\TableWrapper.cs",
+              "RelativeToolTip": "DBLWD6.CustomORM\\Repository\\TableWrapper.cs",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAAAF4AAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T19:54:38.558Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Review.cs",
-              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Domain\\Entities\\Review.cs",
-              "RelativeDocumentMoniker": "DBLWD6.Domain\\Entities\\Review.cs",
-              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Domain\\Entities\\Review.cs",
-              "RelativeToolTip": "DBLWD6.Domain\\Entities\\Review.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAcAAAAAAAAAA==",
+              "Title": "Order.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Domain\\Entities\\Order.cs",
+              "RelativeDocumentMoniker": "DBLWD6.Domain\\Entities\\Order.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Domain\\Entities\\Order.cs*",
+              "RelativeToolTip": "DBLWD6.Domain\\Entities\\Order.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T23:35:37.719Z",
+              "WhenOpened": "2024-12-03T01:24:12.394Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "PromoCodeService.cs",
-              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Client\\Services\\PromoCodeService.cs",
-              "RelativeDocumentMoniker": "DBLWD6.Client\\Services\\PromoCodeService.cs",
-              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Client\\Services\\PromoCodeService.cs",
-              "RelativeToolTip": "DBLWD6.Client\\Services\\PromoCodeService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "OrderService.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Client\\Services\\OrderService.cs",
+              "RelativeDocumentMoniker": "DBLWD6.Client\\Services\\OrderService.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Client\\Services\\OrderService.cs",
+              "RelativeToolTip": "DBLWD6.Client\\Services\\OrderService.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAewGQAAABQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T23:21:19.761Z",
+              "WhenOpened": "2024-12-03T00:40:46.165Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{350f9856-a72b-11d2-8ad0-00c04f79e479}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{ca4b8ff5-bfc7-11d2-9929-00c04f68fdaf}"
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Client\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "DBLWD6.Client\\Services\\UserService.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Client\\Services\\UserService.cs",
+              "RelativeToolTip": "DBLWD6.Client\\Services\\UserService.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAALIBAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T01:46:49.727Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\User\\UserService.cs",
+              "RelativeDocumentMoniker": "DBLWD6.API\\Services\\User\\UserService.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\User\\UserService.cs",
+              "RelativeToolTip": "DBLWD6.API\\Services\\User\\UserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T01:46:56.932Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ResponseData.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Models\\ResponseData.cs",
+              "RelativeDocumentMoniker": "DBLWD6.API\\Models\\ResponseData.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Models\\ResponseData.cs",
+              "RelativeToolTip": "DBLWD6.API\\Models\\ResponseData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T01:43:21.213Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "VacancyService.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\Vacancy\\VacancyService.cs",
+              "RelativeDocumentMoniker": "DBLWD6.API\\Services\\Vacancy\\VacancyService.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\Vacancy\\VacancyService.cs",
+              "RelativeToolTip": "DBLWD6.API\\Services\\Vacancy\\VacancyService.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBYAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T00:51:45.147Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "OrderService.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\Order\\OrderService.cs",
+              "RelativeDocumentMoniker": "DBLWD6.API\\Services\\Order\\OrderService.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\Order\\OrderService.cs",
+              "RelativeToolTip": "DBLWD6.API\\Services\\Order\\OrderService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T00:51:15.248Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "PartnerService.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Client\\Services\\PartnerService.cs",
+              "RelativeDocumentMoniker": "DBLWD6.Client\\Services\\PartnerService.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Client\\Services\\PartnerService.cs",
+              "RelativeToolTip": "DBLWD6.Client\\Services\\PartnerService.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAnwFAAAABtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T01:11:28.789Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Partner.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Domain\\Entities\\Partner.cs",
+              "RelativeDocumentMoniker": "DBLWD6.Domain\\Entities\\Partner.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Domain\\Entities\\Partner.cs",
+              "RelativeToolTip": "DBLWD6.Domain\\Entities\\Partner.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T01:11:41.699Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ManufacturerService.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\Manufacturer\\ManufacturerService.cs",
+              "RelativeDocumentMoniker": "DBLWD6.API\\Services\\Manufacturer\\ManufacturerService.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\Manufacturer\\ManufacturerService.cs",
+              "RelativeToolTip": "DBLWD6.API\\Services\\Manufacturer\\ManufacturerService.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAgwBoAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T00:47:54.355Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ReviewService.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\Review\\ReviewService.cs",
+              "RelativeDocumentMoniker": "DBLWD6.API\\Services\\Review\\ReviewService.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\Review\\ReviewService.cs",
+              "RelativeToolTip": "DBLWD6.API\\Services\\Review\\ReviewService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T00:52:01.636Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "SupplierService.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\Supplier\\SupplierService.cs",
+              "RelativeDocumentMoniker": "DBLWD6.API\\Services\\Supplier\\SupplierService.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\Supplier\\SupplierService.cs",
+              "RelativeToolTip": "DBLWD6.API\\Services\\Supplier\\SupplierService.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAQwBQAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T00:51:56.433Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "FAQService.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\FAQ\\FAQService.cs",
+              "RelativeDocumentMoniker": "DBLWD6.API\\Services\\FAQ\\FAQService.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\FAQ\\FAQService.cs",
+              "RelativeToolTip": "DBLWD6.API\\Services\\FAQ\\FAQService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T00:51:05.394Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ProductService.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\Product\\ProductService.cs",
+              "RelativeDocumentMoniker": "DBLWD6.API\\Services\\Product\\ProductService.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\Product\\ProductService.cs",
+              "RelativeToolTip": "DBLWD6.API\\Services\\Product\\ProductService.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAWwBEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T20:12:23.144Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
               "Title": "PromoCodeService.cs",
               "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\PromoCode\\PromoCodeService.cs",
               "RelativeDocumentMoniker": "DBLWD6.API\\Services\\PromoCode\\PromoCodeService.cs",
               "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\PromoCode\\PromoCodeService.cs",
               "RelativeToolTip": "DBLWD6.API\\Services\\PromoCode\\PromoCodeService.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAQwBQAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-02T23:25:44.381Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 22,
+              "Title": "CategoryService.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\Category\\CategoryService.cs",
+              "RelativeDocumentMoniker": "DBLWD6.API\\Services\\Category\\CategoryService.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\Category\\CategoryService.cs",
+              "RelativeToolTip": "DBLWD6.API\\Services\\Category\\CategoryService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T00:50:59.75Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ArticleService.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\Article\\ArticleService.cs",
+              "RelativeDocumentMoniker": "DBLWD6.API\\Services\\Article\\ArticleService.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\Article\\ArticleService.cs",
+              "RelativeToolTip": "DBLWD6.API\\Services\\Article\\ArticleService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABQAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T00:50:52.639Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "PromoCode.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Domain\\Entities\\PromoCode.cs",
+              "RelativeDocumentMoniker": "DBLWD6.Domain\\Entities\\PromoCode.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Domain\\Entities\\PromoCode.cs",
+              "RelativeToolTip": "DBLWD6.Domain\\Entities\\PromoCode.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T00:40:56.115Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Order.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Controllers\\Order.cs",
+              "RelativeDocumentMoniker": "DBLWD6.API\\Controllers\\Order.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Controllers\\Order.cs",
+              "RelativeToolTip": "DBLWD6.API\\Controllers\\Order.cs",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAYwF0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T00:39:26.37Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "PromoCodeService.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Client\\Services\\PromoCodeService.cs",
+              "RelativeDocumentMoniker": "DBLWD6.Client\\Services\\PromoCodeService.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Client\\Services\\PromoCodeService.cs",
+              "RelativeToolTip": "DBLWD6.Client\\Services\\PromoCodeService.cs",
+              "ViewState": "AgIAAGgAAAAAAAAAAAAIwHIAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T23:21:19.761Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Manufacturer.cs",
+              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Controllers\\Manufacturer.cs",
+              "RelativeDocumentMoniker": "DBLWD6.API\\Controllers\\Manufacturer.cs",
+              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Controllers\\Manufacturer.cs",
+              "RelativeToolTip": "DBLWD6.API\\Controllers\\Manufacturer.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAgwBIAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T00:47:39.726Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
               "Title": "IPromoCodeService.cs",
               "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\PromoCode\\IPromoCodeService.cs",
               "RelativeDocumentMoniker": "DBLWD6.API\\Services\\PromoCode\\IPromoCodeService.cs",
@@ -129,12 +542,11 @@
               "RelativeToolTip": "DBLWD6.API\\Services\\PromoCode\\IPromoCodeService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T23:25:41.792Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T23:25:41.792Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 30,
               "Title": "Product.cs",
               "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Domain\\Entities\\Product.cs",
               "RelativeDocumentMoniker": "DBLWD6.Domain\\Entities\\Product.cs",
@@ -142,12 +554,11 @@
               "RelativeToolTip": "DBLWD6.Domain\\Entities\\Product.cs",
               "ViewState": "AgIAAAIAAAAAAAAAAAAxwA0AAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T22:54:27.929Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T22:54:27.929Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 29,
               "Title": "ProductService.cs",
               "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Client\\Services\\ProductService.cs",
               "RelativeDocumentMoniker": "DBLWD6.Client\\Services\\ProductService.cs",
@@ -155,12 +566,11 @@
               "RelativeToolTip": "DBLWD6.Client\\Services\\ProductService.cs",
               "ViewState": "AgIAABoBAAAAAAAAAAAnwEQBAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T22:38:55.895Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T22:38:55.895Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 33,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\appsettings.json",
               "RelativeDocumentMoniker": "DBLWD6.API\\appsettings.json",
@@ -168,12 +578,11 @@
               "RelativeToolTip": "DBLWD6.API\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-12-02T22:35:58.434Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T22:35:58.434Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 35,
               "Title": "launchSettings.json",
               "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "DBLWD6.API\\Properties\\launchSettings.json",
@@ -181,12 +590,11 @@
               "RelativeToolTip": "DBLWD6.API\\Properties\\launchSettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-12-02T22:35:11.787Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T22:35:11.787Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 31,
               "Title": "Converter.cs",
               "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\Services\\Converter.cs",
               "RelativeDocumentMoniker": "DBLWD6.CustomORM\\Services\\Converter.cs",
@@ -194,25 +602,11 @@
               "RelativeToolTip": "DBLWD6.CustomORM\\Services\\Converter.cs",
               "ViewState": "AgIAAH8BAAAAAAAAAAAWwI4BAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T20:22:13.39Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T20:22:13.39Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ProductService.cs",
-              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\Product\\ProductService.cs",
-              "RelativeDocumentMoniker": "DBLWD6.API\\Services\\Product\\ProductService.cs",
-              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\Product\\ProductService.cs",
-              "RelativeToolTip": "DBLWD6.API\\Services\\Product\\ProductService.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAjwB0AAABKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T20:12:23.144Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 32,
               "Title": "Product.cs",
               "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Controllers\\Product.cs",
               "RelativeDocumentMoniker": "DBLWD6.API\\Controllers\\Product.cs",
@@ -220,51 +614,23 @@
               "RelativeToolTip": "DBLWD6.API\\Controllers\\Product.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAAAwBoAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T20:12:10.745Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T20:12:10.745Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 34,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Program.cs",
               "RelativeDocumentMoniker": "DBLWD6.API\\Program.cs",
               "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Program.cs",
               "RelativeToolTip": "DBLWD6.API\\Program.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAIAwwB0AAABcAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAIAwwB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T19:56:50.304Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T19:56:50.304Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "TableWrapper.cs",
-              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\Repository\\TableWrapper.cs",
-              "RelativeDocumentMoniker": "DBLWD6.CustomORM\\Repository\\TableWrapper.cs",
-              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.CustomORM\\Repository\\TableWrapper.cs",
-              "RelativeToolTip": "DBLWD6.CustomORM\\Repository\\TableWrapper.cs",
-              "ViewState": "AgIAACgBAAAAAAAAAAAjwDcBAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T19:54:38.558Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Client\\Program.cs",
-              "RelativeDocumentMoniker": "DBLWD6.Client\\Program.cs",
-              "ToolTip": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.Client\\Program.cs",
-              "RelativeToolTip": "DBLWD6.Client\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T22:39:25.548Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 36,
               "Title": "DbService.cs",
               "DocumentMoniker": "D:\\Uni\\DBLWD\\DBLWD6\\DBLWD6.API\\Services\\DbService.cs",
               "RelativeDocumentMoniker": "DBLWD6.API\\Services\\DbService.cs",
@@ -272,8 +638,31 @@
               "RelativeToolTip": "DBLWD6.API\\Services\\DbService.cs",
               "ViewState": "AgIAALAAAAAAAAAAAAAwwLwAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T19:45:21.052Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T19:45:21.052Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{6d4078d1-5951-4ed1-ac0e-0a8099c1cce5}"
             }
           ]
         }

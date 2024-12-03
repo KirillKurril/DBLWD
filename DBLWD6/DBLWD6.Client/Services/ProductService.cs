@@ -287,13 +287,12 @@ namespace DBLWD6.Client.Services
             Console.WriteLine("2. Enter custom update details");
 
             var choice = Console.ReadLine();
-            Product product;
             int prevId;
 
             if (choice == "1")
             {
                 prevId = 1;
-                product = new Product
+                var product = new Product
                 {
                     Id = 1,
                     Name = "Updated Demo Product",
@@ -304,41 +303,128 @@ namespace DBLWD6.Client.Services
                     Count = 20,
                     CategoryId = 1
                 };
+
+                try
+                {
+                    var response = await _httpClient.PutAsJsonAsync($"{_baseUrl}?prevId={prevId}", product);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        Console.WriteLine("Product updated successfully");
+                    }
+                    else
+                    {
+                        var error = await response.Content.ReadAsStringAsync();
+                        Console.WriteLine($"Error: {error}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                }
+                return;
             }
-            else
+
+            Console.Write("Enter product ID to update: ");
+            if (!int.TryParse(Console.ReadLine(), out prevId))
             {
-                Console.Write("Enter previous product ID: ");
-                prevId = int.Parse(Console.ReadLine() ?? "1");
-
-                product = new Product();
-
-                Console.Write("Enter new product name: ");
-                product.Name = Console.ReadLine() ?? "";
-
-                Console.Write("Enter new product article number: ");
-                product.ArticleNumber = Console.ReadLine() ?? "";
-
-                Console.Write("Enter new product description: ");
-                product.Description = Console.ReadLine() ?? "";
-
-                Console.Write("Enter new product PricePerUnit: ");
-                product.PricePerUnit = double.Parse(Console.ReadLine() ?? "0");
-
-                Console.Write("Enter new product image: ");
-                product.Image = Console.ReadLine() ?? "";
-
-                Console.Write("Enter new product count: ");
-                product.Count = int.Parse(Console.ReadLine() ?? "0");
-
-                Console.Write("Enter new category ID: ");
-                product.CategoryId = int.Parse(Console.ReadLine() ?? "1");
+                Console.WriteLine("Invalid ID format");
+                return;
             }
 
             try
             {
-                var response = await _httpClient.PutAsJsonAsync($"{_baseUrl}?prevId={prevId}", product);
+                var url = $"{_baseUrl}/{prevId}?includeCategory=true";
+                var response = await _httpClient.GetAsync(url);
+                
+                if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    Console.WriteLine("Product not found");
+                    return;
+                }
+
                 var content = await response.Content.ReadAsStringAsync();
-                Console.WriteLine($"\nResponse:\n{JsonSerializer.Serialize(content, new JsonSerializerOptions { WriteIndented = true })}");
+                var currentProduct = JsonSerializer.Deserialize<Product>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                var product = new Product
+                {
+                    Id = currentProduct.Id,
+                    Name = currentProduct.Name,
+                    ArticleNumber = currentProduct.ArticleNumber,
+                    Description = currentProduct.Description,
+                    PricePerUnit = currentProduct.PricePerUnit,
+                    Image = currentProduct.Image,
+                    Count = currentProduct.Count,
+                    CategoryId = currentProduct.CategoryId
+                };
+
+                Console.WriteLine("\nCurrent values:");
+                Console.WriteLine($"Name: {currentProduct.Name}");
+                Console.WriteLine($"Article Number: {currentProduct.ArticleNumber}");
+                Console.WriteLine($"Description: {currentProduct.Description}");
+                Console.WriteLine($"Price Per Unit: {currentProduct.PricePerUnit}");
+                Console.WriteLine($"Image: {currentProduct.Image}");
+                Console.WriteLine($"Count: {currentProduct.Count}");
+                Console.WriteLine($"Category ID: {currentProduct.CategoryId} (Category: {currentProduct.Category?.Name})");
+                Console.WriteLine("\nPress Enter to keep current value, or enter new value:");
+
+                Console.Write("Enter new name: ");
+                var nameInput = Console.ReadLine();
+                if (!string.IsNullOrEmpty(nameInput))
+                {
+                    product.Name = nameInput;
+                }
+
+                Console.Write("Enter new article number: ");
+                var articleInput = Console.ReadLine();
+                if (!string.IsNullOrEmpty(articleInput))
+                {
+                    product.ArticleNumber = articleInput;
+                }
+
+                Console.Write("Enter new description: ");
+                var descriptionInput = Console.ReadLine();
+                if (!string.IsNullOrEmpty(descriptionInput))
+                {
+                    product.Description = descriptionInput;
+                }
+
+                Console.Write("Enter new price per unit: ");
+                var priceInput = Console.ReadLine();
+                if (!string.IsNullOrEmpty(priceInput) && double.TryParse(priceInput, out double price))
+                {
+                    product.PricePerUnit = price;
+                }
+
+                Console.Write("Enter new image: ");
+                var imageInput = Console.ReadLine();
+                if (!string.IsNullOrEmpty(imageInput))
+                {
+                    product.Image = imageInput;
+                }
+
+                Console.Write("Enter new count: ");
+                var countInput = Console.ReadLine();
+                if (!string.IsNullOrEmpty(countInput) && int.TryParse(countInput, out int count))
+                {
+                    product.Count = count;
+                }
+
+                Console.Write("Enter new category ID: ");
+                var categoryInput = Console.ReadLine();
+                if (!string.IsNullOrEmpty(categoryInput) && int.TryParse(categoryInput, out int categoryId))
+                {
+                    product.CategoryId = categoryId;
+                }
+
+                var updateResponse = await _httpClient.PutAsJsonAsync($"{_baseUrl}?prevId={prevId}", product);
+                if (updateResponse.IsSuccessStatusCode)
+                {
+                    Console.WriteLine("Product updated successfully");
+                }
+                else
+                {
+                    var error = await updateResponse.Content.ReadAsStringAsync();
+                    Console.WriteLine($"Error: {error}");
+                }
             }
             catch (Exception ex)
             {

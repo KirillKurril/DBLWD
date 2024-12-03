@@ -1,4 +1,6 @@
 using DBLWD6.API.Services;
+using DBLWD6.Domain.Entities;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DBLWD6.API.Controllers
 {
@@ -26,8 +28,8 @@ namespace DBLWD6.API.Controllers
         {
             ResponseData<IEnumerable<Order>> orderGetCollectionResponse
                 = await _orderService.GetOrdersCollection(page, itemsPerPage, userId, includeProduct, includeUser, includePickupPoint, includePromoCode);
-            
-            if(!orderGetCollectionResponse.Success)
+
+            if (!orderGetCollectionResponse.Success)
                 return StatusCode(500, orderGetCollectionResponse.ErrorMessage);
 
             return Ok(orderGetCollectionResponse.Data);
@@ -35,7 +37,12 @@ namespace DBLWD6.API.Controllers
 
         [HttpGet]
         [Route("{id:int}")]
-        public async Task<IActionResult> GetById(int id, [FromQuery] bool? includeProduct, [FromQuery] bool? includeUser, [FromQuery] bool? includePickupPoint, [FromQuery] bool? includePromoCode)
+        public async Task<IActionResult> GetById(
+            int id,
+            [FromQuery] bool? includeProduct,
+            [FromQuery] bool? includeUser,
+            [FromQuery] bool? includePickupPoint,
+            [FromQuery] bool? includePromoCode)
         {
             ResponseData<Order> orderGetByIdResponse
                 = await _orderService.GetOrderById(id, includeProduct, includeUser, includePickupPoint, includePromoCode);

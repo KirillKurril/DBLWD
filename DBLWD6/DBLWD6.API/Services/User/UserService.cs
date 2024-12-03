@@ -16,12 +16,19 @@ namespace DBLWD6.API.Services
             _configuration = configuration;
         }
 
+        private async Task<Profile?> GetProfileForUser(int userId)
+        {
+            Expression<Func<Profile, bool>> profilePredicate = p => p.UserId == userId;
+            var profiles = await _dbService.ProfileTable.GetWithConditions(profilePredicate);
+            return profiles.FirstOrDefault();
+        }
+
         public async Task<ResponseData<IEnumerable<User>>> GetUsersCollection(int? page, int? itemsPerPage, bool includeProfile = false)
         {
             itemsPerPage = itemsPerPage ?? int.Parse(_configuration.GetSection("ItemsPerPageDefault").Value!);
             page = page ?? 1;
-            int startIndex = page.Value * itemsPerPage.Value;
-            int endIndex = (page.Value + 1) * itemsPerPage.Value;
+            int startIndex = (page.Value - 1) * itemsPerPage.Value;
+            int endIndex = page.Value * itemsPerPage.Value;
             IEnumerable<User> users;
             Expression<Func<User, bool>> predicate = u => u.Id >= startIndex && u.Id < endIndex;
 
@@ -35,9 +42,7 @@ namespace DBLWD6.API.Services
                     user.Password = null;
                     if (includeProfile)
                     {
-                        Expression<Func<Profile, bool>> profilePredicate = p => p.UserId == user.Id;
-                        var profiles = await _dbService.ProfileTable.GetWithConditions(profilePredicate);
-                        user.Profile = profiles.FirstOrDefault();
+                        user.Profile = await GetProfileForUser(user.Id);
                     }
                 }
             }
@@ -60,9 +65,7 @@ namespace DBLWD6.API.Services
                     user.Password = null;
                     if (includeProfile)
                     {
-                        Expression<Func<Profile, bool>> profilePredicate = p => p.UserId == user.Id;
-                        var profiles = await _dbService.ProfileTable.GetWithConditions(profilePredicate);
-                        user.Profile = profiles.FirstOrDefault();
+                        user.Profile = await GetProfileForUser(user.Id);
                     }
                 }
             }
@@ -87,9 +90,7 @@ namespace DBLWD6.API.Services
                     user.Password = null;
                     if (includeProfile)
                     {
-                        Expression<Func<Profile, bool>> profilePredicate = p => p.UserId == user.Id;
-                        var profiles = await _dbService.ProfileTable.GetWithConditions(profilePredicate);
-                        user.Profile = profiles.FirstOrDefault();
+                        user.Profile = await GetProfileForUser(user.Id);
                     }
                 }
                 return new ResponseData<User>(user);

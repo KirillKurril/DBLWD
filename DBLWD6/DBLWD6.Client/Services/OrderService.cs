@@ -1,12 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Net.Http.Json;
-using System.Text;
 using System.Text.Json;
-using DBLWD6.Domain.Entities;
 
 namespace DBLWD6.Client.Services
 {
@@ -147,7 +141,7 @@ namespace DBLWD6.Client.Services
                     {
                         Console.WriteLine($"Product ID: {order.ProductId}");
                         Console.WriteLine($"Product Name: {order.Product.Name}");
-                        Console.WriteLine($"Product Price: {order.Product.Price}");
+                        Console.WriteLine($"Product PricePerUnit: {order.Product.PricePerUnit}");
                     }
                     
                     if (includeUser == true && order.User != null)
@@ -225,7 +219,7 @@ namespace DBLWD6.Client.Services
                 {
                     Console.WriteLine($"Product ID: {order.ProductId}");
                     Console.WriteLine($"Product Name: {order.Product.Name}");
-                    Console.WriteLine($"Product Price: {order.Product.Price}");
+                    Console.WriteLine($"Product PricePerUnit: {order.Product.PricePerUnit}");
                 }
 
                 if (includeUser == true && order.User != null)
@@ -333,60 +327,87 @@ namespace DBLWD6.Client.Services
                 return;
             }
 
-            var order = new Order();
-            
-            Console.Write("Enter new quantity: ");
-            if (!int.TryParse(Console.ReadLine(), out int quantity))
-            {
-                Console.WriteLine("Invalid quantity format");
-                return;
-            }
-            order.Quantity = quantity;
-
-            Console.Write("Enter new product ID: ");
-            if (!int.TryParse(Console.ReadLine(), out int productId))
-            {
-                Console.WriteLine("Invalid product ID format");
-                return;
-            }
-            order.ProductId = productId;
-
-            Console.Write("Enter new user ID: ");
-            if (!int.TryParse(Console.ReadLine(), out int userId))
-            {
-                Console.WriteLine("Invalid user ID format");
-                return;
-            }
-            order.UserId = userId;
-
-            Console.Write("Enter new pickup point ID: ");
-            if (!int.TryParse(Console.ReadLine(), out int pickupPointId))
-            {
-                Console.WriteLine("Invalid pickup point ID format");
-                return;
-            }
-            order.PickupPointId = pickupPointId;
-
-            Console.Write("Enter new promo code ID (press Enter to skip): ");
-            var promoCodeInput = Console.ReadLine();
-            if (!string.IsNullOrEmpty(promoCodeInput) && int.TryParse(promoCodeInput, out int promoCodeId))
-            {
-                order.PromoCodeId = promoCodeId;
-            }
-
-            order.Date = DateTime.Now;
-
+            // Получаем текущий заказ
             try
             {
-                var response = await _httpClient.PutAsJsonAsync($"{_baseUrl}?prevId={prevId}", order);
-                if (response.IsSuccessStatusCode)
+                var url = $"{_baseUrl}/{prevId}?includeProduct=true&includeUser=true&includePickupPoint=true&includePromoCode=true";
+                var response = await _httpClient.GetAsync(url);
+                
+                if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    Console.WriteLine("Order not found");
+                    return;
+                }
+
+                var content = await response.Content.ReadAsStringAsync();
+                var currentOrder = JsonSerializer.Deserialize<Order>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                var order = new Order
+                {
+                    Id = currentOrder.Id,
+                    Date = currentOrder.Date,
+                    Quantity = currentOrder.Quantity,
+                    ProductId = currentOrder.ProductId,
+                    UserId = currentOrder.UserId,
+                    PickupPointId = currentOrder.PickupPointId,
+                    PromoCodeId = currentOrder.PromoCodeId
+                };
+
+                // Показываем текущие значения и предлагаем их изменить
+                Console.WriteLine("\nCurrent values:");
+                Console.WriteLine($"Quantity: {currentOrder.Quantity}");
+                Console.WriteLine($"Product ID: {currentOrder.ProductId} (Product: {currentOrder.Product?.Name})");
+                Console.WriteLine($"User ID: {currentOrder.UserId} (User: {currentOrder.User?.Email})");
+                Console.WriteLine($"Pickup Point ID: {currentOrder.PickupPointId} (Address: {currentOrder.PickupPoint?.Address})");
+                Console.WriteLine($"Promo Code ID: {currentOrder.PromoCodeId} (Code: {currentOrder.PromoCode?.Code})");
+                Console.WriteLine("\nPress Enter to keep current value, or enter new value:");
+
+                Console.Write("Enter new quantity: ");
+                var quantityInput = Console.ReadLine();
+                if (!string.IsNullOrEmpty(quantityInput) && int.TryParse(quantityInput, out int quantity))
+                {
+                    order.Quantity = quantity;
+                }
+
+                Console.Write("Enter new product ID: ");
+                var productIdInput = Console.ReadLine();
+                if (!string.IsNullOrEmpty(productIdInput) && int.TryParse(productIdInput, out int productId))
+                {
+                    order.ProductId = productId;
+                }
+
+                Console.Write("Enter new user ID: ");
+                var userIdInput = Console.ReadLine();
+                if (!string.IsNullOrEmpty(userIdInput) && int.TryParse(userIdInput, out int userId))
+                {
+                    order.UserId = userId;
+                }
+
+                Console.Write("Enter new pickup point ID: ");
+                var pickupPointIdInput = Console.ReadLine();
+                if (!string.IsNullOrEmpty(pickupPointIdInput) && int.TryParse(pickupPointIdInput, out int pickupPointId))
+                {
+                    order.PickupPointId = pickupPointId;
+                }
+
+                Console.Write("Enter new promo code ID (press Enter to skip or 'remove' to remove promo code): ");
+                var promoCodeInput = Console.ReadLine();
+                if (promoCodeInput?.ToLower() == "remove")
+                {
+                    order.PromoCodeId = null;
+                }
+                else if (!string.IsNullOrEmpty(promoCodeInput) && int.TryParse(promoCodeInput, out int promoCodeId))
+                {
+                    order.PromoCodeId = promoCodeId;
+                }
+
+                var updateResponse = await _httpClient.PutAsJsonAsync($"{_baseUrl}?prevId={prevId}", order);
+                if (updateResponse.IsSuccessStatusCode)
                 {
                     Console.WriteLine("Order updated successfully");
                 }
                 else
                 {
-                    var error = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine($"Error: {error}");
+                    var error = await updateResponse.Content.ReadAsStringAsync();
                 }
             }
             catch (Exception ex)
