@@ -27,8 +27,8 @@ namespace DBLWD6.API
             string dbName;
             try
             {
-                connStr = builder.Configuration.GetConnectionString("MicrosoftSQLServer");
-                //connStr = builder.Configuration.GetConnectionString("MicrosoftSQLServerMiruku");
+                //connStr = builder.Configuration.GetConnectionString("MicrosoftSQLServer");
+                connStr = builder.Configuration.GetConnectionString("MicrosoftSQLServerMiruku");
                 dbName = builder.Configuration.GetSection("DbName").Value;
             }
             catch (Exception ex)
@@ -49,6 +49,7 @@ namespace DBLWD6.API
             builder.Services.AddScoped<IReviewService, ReviewService>();
             builder.Services.AddScoped<ISupplierService, SupplierService>();
             builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IVacancyService, VacancyService>();
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

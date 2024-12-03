@@ -11,7 +11,7 @@ namespace DBLWD6.Domain.Entities
         [NonNull]
         public string Description { get; set; }
 
-        public decimal PricePerUnit { get; set; } = 9.99M;
+        public double PricePerUnit { get; set; } = 9.99;
 
         public string? Image { get; set; }
 

@@ -1,6 +1,7 @@
 using System.Linq.Expressions;
 using System.Security.Cryptography;
 using System.Text;
+using DBLWD6.Domain.Entities;
 
 namespace DBLWD6.API.Services
 {
@@ -15,7 +16,7 @@ namespace DBLWD6.API.Services
             _configuration = configuration;
         }
 
-        public async Task<ResponseData<IEnumerable<User>>> GetUsersCollection(int? page, int? itemsPerPage)
+        public async Task<ResponseData<IEnumerable<User>>> GetUsersCollection(int? page, int? itemsPerPage, bool includeProfile = false)
         {
             itemsPerPage = itemsPerPage ?? int.Parse(_configuration.GetSection("ItemsPerPageDefault").Value!);
             page = page ?? 1;
@@ -27,10 +28,17 @@ namespace DBLWD6.API.Services
             try
             {
                 users = await _dbService.UserTable.GetWithConditions(predicate);
+                
                 // Remove sensitive data before returning
                 foreach (var user in users)
                 {
                     user.Password = null;
+                    if (includeProfile)
+                    {
+                        Expression<Func<Profile, bool>> profilePredicate = p => p.UserId == user.Id;
+                        var profiles = await _dbService.ProfileTable.GetWithConditions(profilePredicate);
+                        user.Profile = profiles.FirstOrDefault();
+                    }
                 }
             }
             catch (Exception ex)
@@ -41,7 +49,7 @@ namespace DBLWD6.API.Services
             return new ResponseData<IEnumerable<User>>(users);
         }
 
-        public async Task<ResponseData<User>> GetUserById(int id)
+        public async Task<ResponseData<User>> GetUserById(int id, bool includeProfile = false)
         {
             User user;
             try
@@ -50,6 +58,12 @@ namespace DBLWD6.API.Services
                 if (user != null)
                 {
                     user.Password = null;
+                    if (includeProfile)
+                    {
+                        Expression<Func<Profile, bool>> profilePredicate = p => p.UserId == user.Id;
+                        var profiles = await _dbService.ProfileTable.GetWithConditions(profilePredicate);
+                        user.Profile = profiles.FirstOrDefault();
+                    }
                 }
             }
             catch (Exception ex)
@@ -60,7 +74,7 @@ namespace DBLWD6.API.Services
             return new ResponseData<User>(user);
         }
 
-        public async Task<ResponseData<User>> GetUserByEmail(string email)
+        public async Task<ResponseData<User>> GetUserByEmail(string email, bool includeProfile = false)
         {
             IEnumerable<User> users;
             try
@@ -71,6 +85,12 @@ namespace DBLWD6.API.Services
                 if (user != null)
                 {
                     user.Password = null;
+                    if (includeProfile)
+                    {
+                        Expression<Func<Profile, bool>> profilePredicate = p => p.UserId == user.Id;
+                        var profiles = await _dbService.ProfileTable.GetWithConditions(profilePredicate);
+                        user.Profile = profiles.FirstOrDefault();
+                    }
                 }
                 return new ResponseData<User>(user);
             }
@@ -94,6 +114,15 @@ namespace DBLWD6.API.Services
                 // Hash password before storing
                 user.Password = HashPassword(user.Password);
                 await _dbService.UserTable.Add(user);
+
+                // Create empty profile for the user
+                var profile = new Profile
+                {
+                    UserId = user.Id,
+                    Photo = "images/employees/default_employee.png",
+                    NonSecretive = false
+                };
+                await _dbService.ProfileTable.Add(profile);
             }
             catch (Exception ex)
             {
@@ -133,6 +162,7 @@ namespace DBLWD6.API.Services
         {
             try
             {
+                // Profile will be automatically deleted due to CASCADE constraint
                 await _dbService.UserTable.Delete(id);
             }
             catch (Exception ex)

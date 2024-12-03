@@ -1,4 +1,7 @@
 using DBLWD6.API.Services;
+using DBLWD6.Domain.Entities;
+using DBLWD6.API.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DBLWD6.API.Controllers
 {

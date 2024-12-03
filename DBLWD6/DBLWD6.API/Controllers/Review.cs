@@ -1,4 +1,7 @@
-﻿using DBLWD6.API.Services;
+using DBLWD6.API.Services;
+using DBLWD6.Domain.Entities;
+using DBLWD6.API.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DBLWD6.API.Controllers
 {
@@ -54,7 +57,7 @@ namespace DBLWD6.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(Review newReview, int prevId)
+        public async Task<IActionResult> Update([FromBody] Review newReview, [FromQuery] int prevId)
         {
             ResponseData<bool> reviewUpdateResponse
                 = await _reviewService.UpdateReview(newReview, prevId);

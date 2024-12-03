@@ -1,4 +1,7 @@
 using DBLWD6.API.Services;
+using DBLWD6.Domain.Entities;
+using DBLWD6.API.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DBLWD6.API.Controllers
 {
@@ -15,7 +18,7 @@ namespace DBLWD6.API.Controllers
 
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetCollection([FromQuery] int? page, [FromQuery] int? itemsPerPage, [FromQuery] bool? includeArticle)
+        public async Task<IActionResult> GetCollection([FromQuery] int? page, [FromQuery] int? itemsPerPage, [FromQuery] bool includeArticle = false)
         {
             ResponseData<IEnumerable<FAQ>> faqGetCollectionResponse
                 = await _faqService.GetFAQsCollection(page, itemsPerPage, includeArticle);
@@ -28,7 +31,7 @@ namespace DBLWD6.API.Controllers
 
         [HttpGet]
         [Route("{id:int}")]
-        public async Task<IActionResult> GetById(int id, [FromQuery] bool? includeArticle)
+        public async Task<IActionResult> GetById(int id, [FromQuery] bool includeArticle = false)
         {
             ResponseData<FAQ> faqGetByIdResponse
                 = await _faqService.GetFAQById(id, includeArticle);

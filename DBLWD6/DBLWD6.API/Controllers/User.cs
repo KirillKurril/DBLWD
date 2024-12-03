@@ -1,4 +1,4 @@
-﻿using DBLWD6.API.Services;
+using DBLWD6.API.Services;
 using DBLWD6.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,10 +16,10 @@ namespace DBLWD6.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] int? page, [FromQuery] int? itemsPerPage)
+        public async Task<IActionResult> Get([FromQuery] int? page, [FromQuery] int? itemsPerPage, [FromQuery] bool includeProfile = false)
         {
             ResponseData<IEnumerable<User>> usersResponse
-                = await _userService.GetUsersCollection(page, itemsPerPage);
+                = await _userService.GetUsersCollection(page, itemsPerPage, includeProfile);
 
             if (!usersResponse.Success)
                 return StatusCode(500, usersResponse.ErrorMessage);
@@ -29,10 +29,10 @@ namespace DBLWD6.API.Controllers
 
         [HttpGet]
         [Route("{id:int}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetById(int id, [FromQuery] bool includeProfile = false)
         {
             ResponseData<User> userResponse
-                = await _userService.GetUserById(id);
+                = await _userService.GetUserById(id, includeProfile);
 
             if (!userResponse.Success)
                 return StatusCode(500, userResponse.ErrorMessage);
@@ -45,10 +45,10 @@ namespace DBLWD6.API.Controllers
 
         [HttpGet]
         [Route("byEmail/{email}")]
-        public async Task<IActionResult> GetByEmail(string email)
+        public async Task<IActionResult> GetByEmail(string email, [FromQuery] bool includeProfile = false)
         {
             ResponseData<User> userResponse
-                = await _userService.GetUserByEmail(email);
+                = await _userService.GetUserByEmail(email, includeProfile);
 
             if (!userResponse.Success)
                 return StatusCode(500, userResponse.ErrorMessage);

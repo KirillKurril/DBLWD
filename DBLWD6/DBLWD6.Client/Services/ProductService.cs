@@ -4,12 +4,12 @@ using System.Text.Json;
 
 namespace DBLWD6.Client.Services
 {
-    public class ProductDemonstrationService
+    public class ProductService
     {
         private readonly HttpClient _httpClient;
         private readonly string _baseUrl;
 
-        public ProductDemonstrationService(string baseUrl)
+        public ProductService(string baseUrl)
         {
             _httpClient = new HttpClient();
             _baseUrl = baseUrl + "Product";
@@ -139,6 +139,13 @@ namespace DBLWD6.Client.Services
                         Console.WriteLine($"Price: {product.PricePerUnit:C}");
                         Console.WriteLine($"In Stock: {product.Count} units");
                         Console.WriteLine($"Category ID: {product.CategoryId}");
+                        if (product.Category != null)
+                        {
+                            Console.WriteLine("Category Information:");
+                            Console.WriteLine($"  - Category ID: {product.Category.Id}");
+                            Console.WriteLine($"  - Category Name: {product.Category.Name}");
+                            Console.WriteLine($"  - Category Description: {product.Category.Description}");
+                        }
                         Console.WriteLine("----------------------------------------");
                     }
                 }
@@ -173,9 +180,12 @@ namespace DBLWD6.Client.Services
                 productId = int.Parse(Console.ReadLine() ?? "1");
             }
 
+            StringBuilder url = new($"{_baseUrl}/{productId}?includeCategory=true");
+            Console.WriteLine('\n' + url.ToString() + '\n');
+
             try
             {
-                var response = await _httpClient.GetAsync($"{_baseUrl}/{productId}");
+                var response = await _httpClient.GetAsync(url.ToString());
                 var content = await response.Content.ReadAsStringAsync();
                 var product = JsonSerializer.Deserialize<Product>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
                 
@@ -189,6 +199,13 @@ namespace DBLWD6.Client.Services
                     Console.WriteLine($"Price: {product.PricePerUnit:C}");
                     Console.WriteLine($"In Stock: {product.Count} units");
                     Console.WriteLine($"Category ID: {product.CategoryId}");
+                    if (product.Category != null)
+                    {
+                        Console.WriteLine("Category Information:");
+                        Console.WriteLine($"  - Category ID: {product.Category.Id}");
+                        Console.WriteLine($"  - Category Name: {product.Category.Name}");
+                        Console.WriteLine($"  - Category Description: {product.Category.Description}");
+                    }
                     Console.WriteLine("----------------------------------------");
                 }
                 else
@@ -219,7 +236,7 @@ namespace DBLWD6.Client.Services
                     Name = "Demo Product",
                     ArticleNumber = "Demo Article Number",
                     Description = "This is a demo product",
-                    PricePerUnit = 99.99m,
+                    PricePerUnit = 99.99,
                     Image = "Demo Image",
                     Count = 10,
                     CategoryId = 1
@@ -238,7 +255,7 @@ namespace DBLWD6.Client.Services
                 product.Description = Console.ReadLine() ?? "";
 
                 Console.Write("Enter product PricePerUnit: ");
-                product.PricePerUnit = decimal.Parse(Console.ReadLine() ?? "0");
+                product.PricePerUnit = double.Parse(Console.ReadLine() ?? "0");
 
                 Console.Write("Enter product image: ");
                 product.Image = Console.ReadLine() ?? "";
@@ -282,7 +299,7 @@ namespace DBLWD6.Client.Services
                     Name = "Updated Demo Product",
                     ArticleNumber = "Updated Demo Article Number",
                     Description = "This is an updated demo product",
-                    PricePerUnit = 149.99m,
+                    PricePerUnit = 149.99,
                     Image = "Updated Demo Image",
                     Count = 20,
                     CategoryId = 1
@@ -305,7 +322,7 @@ namespace DBLWD6.Client.Services
                 product.Description = Console.ReadLine() ?? "";
 
                 Console.Write("Enter new product PricePerUnit: ");
-                product.PricePerUnit = decimal.Parse(Console.ReadLine() ?? "0");
+                product.PricePerUnit = double.Parse(Console.ReadLine() ?? "0");
 
                 Console.Write("Enter new product image: ");
                 product.Image = Console.ReadLine() ?? "";

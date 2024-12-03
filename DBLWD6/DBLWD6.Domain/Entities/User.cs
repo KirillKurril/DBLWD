@@ -31,7 +31,15 @@ namespace DBLWD6.Domain.Entities
         [NonNull]
         public DateTime DateJoined { get; set; }
 
+        [ForeignKey(typeof(Profile), "Id")]
+        public int ProfileId { get; set; }
+
+        [NonMapped]
+        public Profile? Profile { get; set; }
+
         [NonMapped]
         public List<Review> Reviews { get; set; }
+
+        
     }
 }

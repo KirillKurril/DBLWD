@@ -1,3 +1,8 @@
+using DBLWD6.API.Services;
+using DBLWD6.Domain.Entities;
+using DBLWD6.API.Models;
+using Microsoft.AspNetCore.Mvc;
+
 namespace DBLWD6.API.Controllers
 {
     [Route("api/[controller]")]
@@ -40,6 +45,7 @@ namespace DBLWD6.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Article newArticle)
         {
+            newArticle.CreatedAt = DateTime.UtcNow;
             ResponseData<bool> articleCreateResponse
                 = await _articleService.AddArticle(newArticle);
 
